@@ -1,0 +1,77 @@
+.title {
+    font-size: xx-large;
+    text-align: center;
+}
+
+.link {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    /* Simulate link underline */
+    color: rgb(64, 110, 173);
+    /* Link color */
+    padding: 1%;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 5px;
+}
+
+.link:hover {
+    background-color: rgb(234, 232, 241);
+    text-decoration: none;
+}
+
+.jobForm {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.formField {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.formLabel {
+    /* display: block;  */
+    flex-basis: 15%;
+    /* text-align: right; */
+    font-weight: bold;
+    padding-right: 1%;
+}
+
+.formInput {
+    width: 50%;
+    padding: 0.5%;
+    border: solid 1px;
+}
+
+.formInput2 {
+    width: 20%;
+    padding: 0.5%;
+    border: solid 1px;
+}
+
+.formButton {
+    color: black;
+    border: solid 2px;
+    padding: 0.5% 1%;
+    cursor: pointer;
+    border-radius: 5px;
+    /* margin-left: 15%; */
+}
+
+.formSubmitButton {
+    background-color: rgb(222, 222, 222);
+    color: black;
+    border: solid 2px;
+    padding: 0.5% 1%;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 15%;
+}
+
+.jobTable{
+    border-collapse: collapse;
+    width: 100%;
+}
+
