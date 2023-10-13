@@ -35,7 +35,16 @@ function Newjob() {
             console.log("error");
         }
         // console.log(jobId);
-        console.log(selectedQuestions);
+        // console.log(selectedQuestions);
+        setJobId('');
+        setRole('');
+        setType('');
+        setLocation('');
+        setEmploymentType('');
+        setJobDescription('');
+        setSkills('');
+        setExperience('');
+        setSelectedQuestions([])
     }
     const displayQuestions = () => {
 
@@ -67,7 +76,7 @@ function Newjob() {
                             <div className={styles.formField}>
                                 <label htmlFor="jobId" className={styles.formLabel}>Job ID:</label>
                                 <input className={styles.formInput}
-                                    type="number"
+                                    type="text"
                                     id="jobId"
                                     value={_id}
                                     placeholder='Enter Job Id'

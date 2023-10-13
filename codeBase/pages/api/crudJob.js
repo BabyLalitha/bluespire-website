@@ -56,9 +56,10 @@ export default async function crudJob(req, res) {
       // }
     if(req.method==='PUT'){
       try{
-      const {_id,updateData} = req.body;
-
-    const updatedItem = await job.findByIdAndUpdate(_id, updateData, {
+      const {id,updateData} = req.body;
+        // console.log(id);
+        // console.log(updateData);
+    const updatedItem = await job.findByIdAndUpdate(id, updateData, {
       new: true, // Return the updated document
     });
 

@@ -2,12 +2,13 @@
 
 import React from 'react'
 import IndexPage from '../page'
-import styles from '../../styles/home.module.css'
-import {useState,useEffect} from 'react'
-import {useRouter} from 'next/router'
+import styles from '../../../styles/admin.module.css'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 function UpdateJob() {
-    const [_id, setJobId] = useState(0);
+    const [job, setJob] = useState({});
+    const [_id, setJobId] = useState('');
     const [role, setRole] = useState('');
     const [location, setLocation] = useState('');
     const [type, setType] = useState('');
@@ -15,80 +16,89 @@ function UpdateJob() {
     const [jobDescription, setJobDescription] = useState('');
     const [skills, setSkills] = useState('');
     const [experience, setExperience] = useState('');
-    const [isScreeningQuestionVisible, setScreenQuestionVisible] = useState(false);
-    const [checkBox, setCheckBox] = useState(false);
-    const [screeningQuestions, setScreeningQuestions] = useState([]);
     const [selectedQuestions, setSelectedQuestions] = useState([]);
-    const [job,setJob]=useState({});
+    const [message, setMessage] = useState('');
 
-    const router=useRouter();
-    const {id}=router.query;
-
+    const searchParams = useSearchParams();
+    const id = searchParams.get('id');
+    
     useEffect(() => {
         // Define the ID you want to fetch
-        const resourceId= id; // Replace with the actual ID
-    
+        const resourceId = id; // Replace with the actual ID
         // Make a GET request to the API route
         fetch(`/api/getJobById?id=${resourceId}`)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((responseData) => {
+                setJob(responseData);
+                setJobId(responseData._id);
+                setRole(responseData.role);
+                setType(responseData.type);
+                setLocation(responseData.location);
+                setEmploymentType(responseData.EmploymentType);
+                setJobDescription(responseData.jobDescription);
+                setSkills(responseData.skills);
+                setExperience(responseData.experience);
+                setSelectedQuestions(responseData.selectedQuestions);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }, []);
+
+    const submit = async (e) => {
+        e.preventDefault();
+        const idToUpdate = job._id;
+        const updateData = { "_id": _id, "role": role, "type": type, "location": location, "EmploymentType": EmploymentType, "jobDescription": jobDescription, "skills": skills, "experience": experience, "selectedQuestions": selectedQuestions };
+        try {
+            const response = await fetch('/api/crudJob', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: idToUpdate, updateData }),
+            });
+
+            if (response.status === 200) {
+                setMessage('Record updated successfully');
+            } else {
+                setMessage('Error updating record');
             }
-            return response.json();
-          })
-          .then((responseData) => {
-            // Handle the fetched data
-            setJob(responseData);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-      }, []);
-      //console.log(job);
-
-      const handleInputChange=(e,field)=>{
-        if(field==='_id'){
-            job._id=e.target.value;
-          }
-          if(field==='role'){
-            job.role=e.target.value;
-          }
-          if(field==='type'){
-            job.type=e.target.value;
-          }
-          if(field==='location'){
-            job.location=e.target.value;
-          }
-          if(field==='EmploymentType'){
-            job.EmploymentType=e.target.value;
-          }
-          if(field==='jobDescription'){
-            job.jobDescription=e.target.value;
-          }
-          if(field==='skills'){
-            job.skills=e.target.value;
-          }
-          if(field==='experience'){
-            job.experience=e.target.value;
-          }
-      }
-
-  return (
-    <>
+        } catch (error) {
+            console.error('Error updating record:', error);
+            setMessage('Error updating record');
+        }
+        setJobId('');
+        setRole('');
+        setType('');
+        setLocation('');
+        setEmploymentType('');
+        setJobDescription('');
+        setSkills('');
+        setExperience('');
+        setSelectedQuestions('');
+    }
+    
+    return (
+        <>
             <div className='container'>
                 <div className='row'><IndexPage /></div><br /><br />
                 <div className='row'>
                     <div className={styles.jobForm}>
-                        <form >
+                        <form onSubmit={submit}>
                             <div className={styles.formField}>
                                 <label htmlFor="jobId" className={styles.formLabel}>Job ID:</label>
                                 <input className={styles.formInput}
-                                    type="number"
+                                    type="text"
                                     id="jobId"
-                                    value={job._id}
+                                    value={_id}
                                     placeholder='Enter Job Id'
-                                    // onChange={(e) => setJobId(e.target.value)}
-                                    onChange={(e) => handleInputChange(e,"_id")}
+                                    onChange={(e) => setJobId(e.target.value)}
+                                    // onChange={(e) => handleInputChange(e,"_id")}
                                     required
                                 />
                             </div>
@@ -97,10 +107,10 @@ function UpdateJob() {
                                 <input className={styles.formInput}
                                     type="text"
                                     id="role"
-                                    value={job.role}
+                                    value={role}
                                     placeholder='Enter Job role'
-                                    // onChange={(e) => setRole(e.target.value)}
-                                    onChange={(e) => handleInputChange(e,"role")}
+                                    onChange={(e) => setRole(e.target.value)}
+                                    // onChange={(e) => handleInputChange(e,"role")}
                                     required
                                 />
                             </div>
@@ -108,9 +118,9 @@ function UpdateJob() {
                                 <label htmlFor="type" className={styles.formLabel}>Type:</label>
                                 <select className={styles.formInput}
                                     id="type"
-                                    value={job.type}
-                                    // onChange={(e) => setType(e.target.value)}
-                                    onChange={(e) => handleInputChange(e,"type")}
+                                    value={type}
+                                    onChange={(e) => setType(e.target.value)}
+                                    // onChange={(e) => handleInputChange(e,"type")}
                                     required>
                                     <option value="">Select a type</option>
                                     <option value="Onsite">Onsite</option>
@@ -123,10 +133,10 @@ function UpdateJob() {
                                 <input className={styles.formInput}
                                     type="text"
                                     id="location"
-                                    value={job.location}
+                                    value={location}
                                     placeholder='Enter Job Location'
-                                    // onChange={(e) => setLocation(e.target.value)}
-                                    onChange={(e) => handleInputChange(e,"location")}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                    // onChange={(e) => handleInputChange(e,"location")}
                                     required
                                 />
                             </div>
@@ -134,9 +144,9 @@ function UpdateJob() {
                                 <label htmlFor="EmploymentType" className={styles.formLabel}>Employment Type:</label>
                                 <select className={styles.formInput}
                                     id="EmploymentType"
-                                    value={job.EmploymentType}
-                                    // onChange={(e) => setEmploymentType(e.target.value)}
-                                    onChange={(e) => handleInputChange(e,"EmploymentType")}
+                                    value={EmploymentType}
+                                    onChange={(e) => setEmploymentType(e.target.value)}
+                                    // onChange={(e) => handleInputChange(e,"EmploymentType")}
                                     required>
                                     <option value="">Select a Employment type</option>
                                     <option value="Full time">Full Time</option>
@@ -149,9 +159,9 @@ function UpdateJob() {
                                 <textarea className={styles.formInput}
                                     type="text"
                                     id="jobDescription"
-                                    value={job.jobDescription}
-                                    // onChange={(e) => setJobDescription(e.target.value)}
-                                    onChange={(e) => handleInputChange(e,"jobDescription")}
+                                    value={jobDescription}
+                                    onChange={(e) => setJobDescription(e.target.value)}
+                                    // onChange={(e) => handleInputChange(e,"jobDescription")}
                                     placeholder="Enter job description"
                                     required
                                 ></textarea>
@@ -160,9 +170,9 @@ function UpdateJob() {
                                 <label htmlFor="skills" className={styles.formLabel}>Skills required:</label>
                                 <textarea className={styles.formInput}
                                     id="skills"
-                                    value={job.skills}
-                                    // onChange={(e) => setSkills(e.target.value)}
-                                    onChange={(e) => handleInputChange(e,"skills")}
+                                    value={skills}
+                                    onChange={(e) => setSkills(e.target.value)}
+                                    // onChange={(e) => handleInputChange(e,"skills")}
                                     placeholder="Enter skills required"
                                     required
                                 ></textarea>
@@ -171,39 +181,33 @@ function UpdateJob() {
                                 <label htmlFor="experience" className={styles.formLabel}>Experience required:</label>
                                 <textarea className={styles.formInput}
                                     id="experience"
-                                    value={job.experience}
-                                    // onChange={(e) => setExperience(e.target.value)}
-                                    onChange={(e) => handleInputChange(e,"experience")}
+                                    value={experience}
+                                    onChange={(e) => setExperience(e.target.value)}
+                                    // onChange={(e) => handleInputChange(e,"experience")}
                                     placeholder="Enter experience required"
                                     required
                                 ></textarea>
                             </div>
-                            {/* <div className={styles.formField}>
-                                <label htmlFor="screening questions" className={styles.formLabel}>Screening Questions:</label>
-                                <input type="button" className={styles.formButton} onClick={displayQuestions} value="Add questions" />
-                            </div>
-                            <br />
                             <div className={styles.formField}>
-                                {isScreeningQuestionVisible && <>
-                                    <ul>
-                                        <p>Select the screening questions for this job:</p>
-                                        {screeningQuestions.map((item) => (
-                                            <li key={item._id}>
-                                                <input type="checkbox" value={checkBox} onChange={(e) => addQuestion(item._id, e.target.checked)}></input>{item.question}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <br />
-                                </>
-                                }
-                            </div> */}
-                            <button className={styles.formSubmitButton} type="submit">Post Job</button>
+                                <label htmlFor="selectedQuestions" className={styles.formLabel}>Screening Questions:</label>
+                                <input className={styles.formInput}
+                                    type="text"
+                                    id="selectedQuestions"
+                                    value={selectedQuestions}
+                                    onChange={(e) => setSelectedQuestions(e.target.value)}
+                                    // onChange={(e) => handleInputChange(e,"experience")}
+                                    placeholder="Enter screening questions"
+                                    required
+                                ></input>
+                            </div>
+                            <button className={styles.formSubmitButton} type="submit">Update Job</button>
                         </form>
+                        {message}
                     </div>
                 </div>
             </div>
         </>
-  )
+    )
 }
 
 export default UpdateJob

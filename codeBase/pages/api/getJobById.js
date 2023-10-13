@@ -1,5 +1,5 @@
 import React from 'react'
-import Job from '../models/tblJobs'
+import Job from '../../models/tblJobs'
 
 async function getJobById(req,res) {
     try{
