@@ -1,10 +1,9 @@
 'use client';
-
 import React from 'react'
 import IndexPage from '../page.js'
 import styles from '../../../styles/admin.module.css'
 import { useState } from 'react';
-
+import  {useEffect} from 'react';
 function Newjob() {
     const [_id, setJobId] = useState('');
     const [role, setRole] = useState('');
@@ -18,7 +17,16 @@ function Newjob() {
     const [checkBox, setCheckBox] = useState(false);
     const [screeningQuestions, setScreeningQuestions] = useState([]);
     const [selectedQuestions, setSelectedQuestions] = useState([]);
-
+    const [ScreeningQuestionList,setScreeningQuestionList]=useState([]);
+    const [questions, setQuestions] = useState([]);
+  const [newQuestion, setNewQuestion] = useState('');
+  const handleAddQuestion = () => {
+     if (newQuestion) {
+      //setQuestions([...questions, newQuestion]);
+      selectedQuestions.push(newQuestion);
+       setNewQuestion('');
+     }
+    }
     const onSubmit = async (e) => {
         e.preventDefault();
         const response = await fetch('/api/crudJob', {
@@ -37,21 +45,24 @@ function Newjob() {
         // console.log(jobId);
         console.log(selectedQuestions);
     }
-    const displayQuestions = () => {
-
-        setScreenQuestionVisible(!isScreeningQuestionVisible);
+    useEffect(()=>{
         fetch('/api/getScreening')
             .then((response) => response.json())
             .then((data) => setScreeningQuestions(data))
             .catch((error) => console.error('Error fetching data:', error));
+    });
+    const displayQuestions = () => {
+
+        setScreenQuestionVisible(!isScreeningQuestionVisible);
+        
     };
 
-    const addQuestion = (id, c) => {
+    const addQuestion = (question, c) => { 
         if (c) {
-            selectedQuestions.push(id);
+            selectedQuestions.push(question);
         }
         else if (!c) {
-            const i = selectedQuestions.indexOf(id);
+            const i = selectedQuestions.indexOf(question);
             if (i!= -1)
                 selectedQuestions.splice(i, 1);
         }
@@ -154,12 +165,41 @@ function Newjob() {
                                     required
                                 ></textarea>
                             </div>
-                            <div className={styles.formField}>
+
+        <div className={styles.formField}>
+        <label htmlFor="screeningquestionlist" className={styles.formLabel}>ScreeningQuestionList:</label>
+        <ul><p>Select the screening questions for this job:</p>
+        {screeningQuestions.map((questions) => (
+          <li key={questions._id}>
+          <input type="checkbox" value={checkBox} onChange={(e) => addQuestion(questions.question, e.target.checked)}></input>{questions.question}
+                                            </li> // Adjust property names accordingly
+        ))}
+      </ul>
+      </div>
+                            {/* <div className={styles.formField}>
                                 <label htmlFor="screening questions" className={styles.formLabel}>Screening Questions:</label>
                                 <input type="button" className={styles.formButton} onClick={displayQuestions} value="Add questions" />
-                            </div>
-                            <br />
-                            <div className={styles.formField}>
+                            </div> */}
+         <div className={styles.formField}>
+        <label htmlFor='Enter your question' className={styles.formLabel}>Enter your question:</label>
+        <input
+          type="text"
+          placeholder="Enter your question"
+          value={newQuestion}
+          onChange={(e) => setNewQuestion(e.target.value)}
+        />
+        <button onClick={handleAddQuestion}>Add Question</button>
+   
+      {/* <ul>
+        {questions.map((question, index) => (
+          <li key={index}>{question}
+           //<input type="checkbox" value={checkBox} onChange={(e) => addQuestion(screeningQuestions.question, e.target.checked)}></input>{questions.question}
+           </li>
+        ))}
+      </ul> */}
+      </div>
+                            <br/>
+                            {/* <div className={styles.formField}>
                                 {isScreeningQuestionVisible && <>
                                     <ul>
                                         <p>Select the screening questions for this job:</p>
@@ -172,11 +212,12 @@ function Newjob() {
                                     <br />
                                 </>
                                 }
-                            </div>
+                            </div> */}
                             <button className={styles.formSubmitButton} type="submit">Post Job</button>
                         </form>
                     </div>
                 </div>
+                
             </div>
         </>
     )

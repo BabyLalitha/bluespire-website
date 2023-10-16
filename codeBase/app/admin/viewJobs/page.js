@@ -198,10 +198,10 @@ function Viewjob() {
                             }</td>
                             <td>{update===index?
                             <input type="text"
-                            value={item.selectedQuestions.join(',')}
+                            value={item.selectedQuestions.join("\b")}
                             onChange={(e) => handleInputChange(e, index,"selectedQuestions")}
                             />:
-                            item.selectedQuestions.join(',')
+                            item.selectedQuestions.join("\b")
                             }
                               </td>
                             <td><button className={styles.link} onClick={()=>deleteById(item._id)}>Delete</button><button className={styles.link}>Update</button>

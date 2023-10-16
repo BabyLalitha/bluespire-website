@@ -16,7 +16,7 @@ const JobSchema = new Schema({
     jobDescription: String,
     skills: String,
     experience: String,
-    selectedQuestions : [Number]
+    selectedQuestions : [String]
 });
 
 export default mongoose.models.tblJobs || mongoose.model('tblJobs', JobSchema);
