@@ -2,7 +2,7 @@
 
 import React from 'react'
 import IndexPage from '../page'
-import styles from '../../styles/home.module.css'
+import styles from '../../../styles/admin.module.css'
 import {useState,useEffect} from 'react'
 import {useRouter} from 'next/router'
 

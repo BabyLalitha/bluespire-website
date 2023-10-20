@@ -1,0 +1,171 @@
+.responsivetext {
+  font-size: clamp(5px, 20px, 30px);
+}
+
+
+
+
+.apage100 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  padding-top: 20px;
+  height: 100%;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+
+
+
+
+
+.acard100 {
+  width: 300px;
+  height: 152px;
+
+  overflow: hidden;
+  position: relative;
+}
+
+
+
+
+.asocialbtn {
+  position: relative;
+
+}
+
+.acardimg100 {
+  width: 139px;
+  height: 150px;
+
+  float: left;
+
+}
+
+.acardnametitle {
+  width: 50%;
+  height: 100%;
+
+  float: right;
+
+
+}
+
+
+
+.acardbody100 {
+  width: 100%;
+  height: 150px;
+  top: 0;
+  right: -100%;
+  position: absolute;
+  opacity: 0.77;
+  background: #065593;
+  box-shadow: '5px 5px 5px ';
+  filter: 'blur(5px)';
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  transition: 650ms;
+}
+
+.acard100:hover .acardbody100 {
+  right: 0;
+}
+
+
+
+
+
+
+.aimage {
+  overflow: hidden;
+  transition: 0.5s ease;
+
+  width: 300px;
+  height: 150px;
+}
+
+.aimage:hover {
+  transform: scale(1.1);
+  overflow: hidden;
+  transform-origin: 100% 100%;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+@media (min-width:1101px) {
+  .sideCard {
+    width: 98vw;
+    height: 100%;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+
+
+  }
+  .image {
+    width: 30vw;
+    height: 30vw;
+    border-radius: 509px;
+    overflow: hidden;
+    justify-content: center;
+    align-Items: center
+  }
+
+}
+
+@media (max-width:1100px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .image {
+    width: 60vw;
+    height: 60vw;
+    border-radius: 509px;
+    overflow: hidden;
+    justify-content: center;
+    align-Items: center
+  }
+
+
+
+}
+
+@media (max-width: 700px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+
+
+}
+
+@media(max-width:500px) {
+  .sideCard {
+
+    width: 98vw;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+
+
+  }
+}
