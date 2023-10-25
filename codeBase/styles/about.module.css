@@ -1,6 +1,5 @@
-.responsivetext {
-  font-size: clamp(5px, 20px, 30px);
-}
+
+
 
 
 
@@ -120,24 +119,85 @@
 
 
   }
+
+  .whoWeAre {
+    width: 40vw;
+  }
+
+  .button {
+     width: 20vw;
+    left: 70vw;
+    top: 45%;
+
+   
+  }
+
   .image {
-    width: 30vw;
-    height: 30vw;
+    width: 70%;
+    height: 70%;
     border-radius: 509px;
     overflow: hidden;
     justify-content: center;
     align-Items: center
   }
 
+  .retext {
+    width: 60vw;
+
+  }
 }
+
+
 
 @media (max-width:1100px) {
   .gridContainer {
     grid-template-columns: repeat(2, 1fr);
   }
+  .sideCard {
+    
+    width: 98%;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .whoWeAre {
+    width: 88vw;
+  }
+
   .image {
-    width: 60vw;
-    height: 60vw;
+    
+    width: 70%;
+    height: 70%;
+    border-radius: 509px;
+    overflow: hidden;
+    justify-content: center;
+    align-Items: center
+  }
+  .button {
+    width: 20vw;
+   
+
+  
+ }
+
+
+
+}
+
+@media (max-width: 826px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+  .button {
+    padding: 20px;
+    width:300px;
+    
+  }
+  .image {
+    
+    width: 80%;
+    height: 80%;
     border-radius: 509px;
     overflow: hidden;
     justify-content: center;
@@ -145,27 +205,29 @@
   }
 
 
-
 }
 
-@media (max-width: 700px) {
-  .gridContainer {
-    grid-template-columns: 1fr;
+@media(max-width:600px) {
+  
+
+  .button {
+    padding: 20px;
+    width:300px;
+    
   }
 
-
-}
-
-@media(max-width:500px) {
-  .sideCard {
-
-    width: 98vw;
-    height: 100%;
-    text-align: center;
-    align-items: center;
+  .retext {
+    width: 90%;
+  }
+  .image {
+    
+    width: 80%;
+    height: 80%;
+    border-radius: 509px;
+    overflow: hidden;
     justify-content: center;
-
-
-
+    align-Items: center
   }
+
+  
 }
