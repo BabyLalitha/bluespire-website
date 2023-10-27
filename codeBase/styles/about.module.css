@@ -143,6 +143,7 @@
 
   .retext {
     width: 60vw;
+    opacity: 0.8;
 
   }
 }
@@ -218,6 +219,7 @@
 
   .retext {
     width: 90%;
+    opacity: 0.8;
   }
   .image {
     
