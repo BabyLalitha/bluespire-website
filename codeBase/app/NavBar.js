@@ -15,7 +15,8 @@ const NavBar = () => {
   }
 
   return (
-    <nav className='bg-white sticky top-0 z-50 shadow-cyan-500/50'>
+    <div className='bg-white sticky top-0 z-50'>
+    <nav className='bg-white sticky top-0 z-50 shadow-cyan-500/50 max-w-screen-2xl mx-auto'>
       <div className='flex items-center font-medium justify-between'>
         <div className='z-50 p-2 md:w-auto w-full flex justify-between pl-[5%] items-center'>
           <a href="/">
@@ -64,6 +65,7 @@ const NavBar = () => {
         </ul>
       </div>
     </nav >
+    </div>
   )
 }
 
