@@ -1,4 +1,4 @@
-import screening from '../models/tblScreening'
+import screening from '../../models/tblScreening'
 
 export default async function postScreening(req,res){
     try {
