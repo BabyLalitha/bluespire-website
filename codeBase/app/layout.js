@@ -1,6 +1,9 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 // import { useEffect } from 'react'
+import './globals.css';
+import NavBar from './NavBar';
+import Footer from './Footer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,11 +16,21 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-       
-      </head>
-      <body className={inter.className}>{children}</body>
+
+      <body>
+        <NavBar />
+        <section>
+          {children}
+        </section>
+        <section>
+          {/* <div className='bg-blue h-screen flex justify-center'>Commmon Layout...</div> */}
+          <Footer />
+        </section>
+
+        {/*********** ion-icon installation. ****************/}
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      </body>
     </html>
   )
 }
