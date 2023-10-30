@@ -8,16 +8,18 @@ mongoose.connect('mongodb://127.0.0.1:27017/adminmoduleDB', {
 // Create a Mongoose model for your data
 const Schema = mongoose.Schema;
 const JobSchema = new Schema({
-    _id: String,
-    role: String,
-    type: String,
+    companyName: String,
+    companyWebsite: String,
+    jobTitle: String,
+    jobCategory: String,
+    jobType: String,
     location: String,
-    EmploymentType: String,
-    jobDescription: String,
     skills: String,
     experience: String,
     active: Boolean,
-    selectedQuestions : [Number]
+    qualification:String,
+    applnLink:String,
+    jobDescription:String
 });
 
-export default mongoose.models.tblJobs || mongoose.model('tblJobs', JobSchema);
+export default mongoose.models.Jobs || mongoose.model('Jobs', JobSchema);

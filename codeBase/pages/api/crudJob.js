@@ -1,6 +1,7 @@
 
 // import bodyParser from 'body-parser';
-import job from '../../models/tblJobs'
+// import job from '../../models/tblJobs'
+import Jobs from '../../models/Jobs'
 
 export default async function crudJob(req, res) {
     // res.status(200).json({ name: 'John Doe' })
@@ -10,10 +11,10 @@ export default async function crudJob(req, res) {
     // app.use(bodyParser.json());
     if (req.method === 'POST') {
         try {
-            const { _id, role, type, location, EmploymentType, jobDescription, skills, experience, selectedQuestions } = req.body;
+            const {companyName,companyWebsite,jobTitle,jobCategory,jobType,location,skills,experience,qualification,applnLink,jobDescription,active} = req.body;
 
             // Create a new document using the Mongoose model
-            const newData = new job({ _id, role, type, location, EmploymentType, jobDescription, skills, experience, selectedQuestions });
+            const newData = new Jobs({ companyName,companyWebsite,jobTitle,jobCategory,jobType,location,skills,experience,qualification,applnLink,jobDescription,active });
 
             // Save the document to the database
             await newData.save();
@@ -26,7 +27,7 @@ export default async function crudJob(req, res) {
     }
     if (req.method === 'GET') {
         try {
-            const items = await job.find();
+            const items = await Jobs.find();
             res.json(items);
         }
         catch (error) {
@@ -39,7 +40,7 @@ export default async function crudJob(req, res) {
           const { id } = req.body; // Get the _id value from the request body
     
           // Use Mongoose to delete the record by _id
-          const deletedRecord = await job.findByIdAndDelete(id);
+          const deletedRecord = await Jobs.findByIdAndDelete(id);
     
           if (!deletedRecord) {
             return res.status(404).json({ message: 'Record not found' });
@@ -59,7 +60,7 @@ export default async function crudJob(req, res) {
       const {id,updateData} = req.body;
         // console.log(id);
         // console.log(updateData);
-    const updatedItem = await job.findByIdAndUpdate(id, updateData, {
+    const updatedItem = await Jobs.findByIdAndUpdate(id, updateData, {
       new: true, // Return the updated document
     });
 
