@@ -15,6 +15,7 @@ function HomeService() {
                 {/* ***************Services container**************** */}
                 <div className='grid grid-cols-1 sm:grid-cols-2  gap-2 gap-y-16 w-[100%] max-w-screen-xl mx-auto'>
                     <div className='w-[90%] sm:w-[90%] mx-auto'>
+
                         <div className='mb-4'>
                             <p className='text-lg font-semibold'>
                                 Consult And Design
@@ -30,6 +31,7 @@ function HomeService() {
                         </button>
                     </div>
                     <div className='w-[90vw] sm:w-[90%] mx-auto'>
+
                         <div className='mb-4'>
                             <p className='text-lg font-semibold'>
                                 Engineer & Automate
