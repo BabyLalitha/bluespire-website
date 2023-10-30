@@ -12,7 +12,7 @@ const Footer = () => {
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0 flex flex-col justify-center">
             <a href="/" class="flex items-center">
-              <Image src={bslogo} class="h-28 w-auto mr-3" alt="FlowBite Logo" />
+              <Image src={bslogo} class="h-28 w-auto mr-3" alt="bluespire logo" />
             </a>
           </div>
           <div class="grid grid-cols-1 gap-8 sm:gap-16 sm:grid-cols-2 ">
