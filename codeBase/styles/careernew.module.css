@@ -1,0 +1,59 @@
+.abc{
+    position:fixed;
+}
+.sss{
+    position: relative;
+    width:100%;
+    min-height:60vh;
+    max-height: 100vh;
+    
+}
+.find{
+    /* display:flex; */
+    max-height:50vw;
+    position:absolute;
+top: 20%;
+/* left: 130.02px; */
+left:10%;
+
+     align-items: center; 
+
+}
+.the{
+    font-size: clamp(2rem, 4.5vw, 10rem);
+    line-height: 1;
+    font-weight: 600;
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
+    --tw-bg-opacity: 0.5;
+    padding:  16px;
+}
+/* .that{
+    left:px;
+height: -10px;
+color: #616161;
+font-family: Poppins;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+} */
+.then{
+
+color: black;
+font-size: 30px;
+font-family: Poppins;
+font-weight: 600;
+line-height: 80;
+word-wrap: break-word;
+display:flex;
+align-items: center;
+justify-content: center;
+padding-top: 3%;
+background-color: #F6F7FA;
+}
+.has{
+    width: 232.656px;
+height: 191px;
+background: #FFF;
+flex-shrink: 0;
+}

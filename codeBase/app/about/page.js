@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+
 import img from '../../public/Rectangle.png';
 import img2 from '../../public/aboutImg2.png';
 import styles from '../../styles/about.module.css';
@@ -11,10 +11,10 @@ import chandra from '../../public/chandra.jpg'
 import sample from '../../public/white.png'
 import { useRouter } from 'next/navigation';
 
-function page() {
+function About() {
   const router=useRouter();
 
-
+  
   const ceoData = [
     {
       id: 0,
@@ -56,19 +56,22 @@ function page() {
   const arr = leaderData.map((data) => {
     return (
       <LeaderCard
-        key={data.id} // Assuming data.id is a unique identifier
+        key={data.id} 
         name={data.name}
         image={data.image}
         title={data.title}
         li={data.li}
       />
     );
+
+
+
   });
 
   const ceo = ceoData.map((data) => {
     return (
       <LeaderCard
-        key={data.id} // Assuming data.id is a unique identifier
+        key={data.id} 
         name={data.name}
         image={data.image}
         title={data.title}
@@ -77,8 +80,9 @@ function page() {
     );
   });
 
+  
   return (
-    <div >
+    <div className='font-poppins' >
 
 
       <center><div style={{ backdropFilter: "blur(424px)", justifyContent: 'center', alignItems: 'center', display: 'inline-flex' }}>
@@ -168,4 +172,4 @@ function page() {
 
 
 
-export default page
+export default About
