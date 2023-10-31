@@ -1,6 +1,5 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-
 // import { useEffect } from 'react'
 import './globals.css';
 import NavBar from './NavBar';
@@ -17,10 +16,6 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-      </head>
-      {/* <body className={inter.className}>{children}</body> */}
       <body>
         <NavBar />
         <section>
@@ -29,9 +24,6 @@ export default function RootLayout({ children }) {
         <section>
           {/* <div className='bg-blue h-screen flex justify-center'>Commmon Layout...</div> */}
           <Footer />
-          {/* <div className='h-screen w-screen flex justify-center items-center bg-blue'>
-          hey layout woring fine...
-        </div> */}
         </section>
 
         {/*********** ion-icon installation. ****************/}

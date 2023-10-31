@@ -12,7 +12,7 @@ function Viewjob() {
   //const [items, setItems] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [message, setMessage] = useState('');
-  const [filteredJobs,setFilteredJobs]=useState([]);
+  const [filteredJobs, setFilteredJobs] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   const router = useRouter();
@@ -28,7 +28,7 @@ function Viewjob() {
       .catch((error) => console.error('Error fetching data:', error));
 
   }, []);
-  
+
 
   // setFilteredJobs(jobs);
 
@@ -43,7 +43,7 @@ function Viewjob() {
           },
           body: JSON.stringify({ id }),
         });
-  
+
         if (response.status === 200) {
           // Update the message state outside of the fetch block
           setMessage('Records deleted successfully');
@@ -63,96 +63,105 @@ function Viewjob() {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-  
+
     // Implement your search logic here
     const results = jobs.filter((job) => {
-      const searchFields = job.companyName+job.companyWebsite+job.jobCategory+job.jobTitle+job.jobType+job.location+job.skills+job.experience+job.qualification+job.applnLink+job.jobDescription;
+      const searchFields = job.companyName + job.clientName + job.jobCategory + job.jobTitle + job.jobType + job.location + job.workplaceType + job.skills + job.experience + job.seniorityLevel + job.qualification + job.applnLink + job.jobDescription + job.selectedQuestions;
       return searchFields.toLowerCase().includes(query.toLowerCase());
     });
-  
+
     setFilteredJobs(results);
   };
   // console.log(jobs[0].active);
-  
+
   return (
- <div> 
-    {/* <div className='container'> */}
+    <div>
+      {/* <div className='container'> */}
       {/* <div className='row'><IndexPage /> */}
-      <div className="w-200 h-32 bg-gray-100 flex items-center justify-center">
-                        <div className="text-black text-3xl font-medium font-['Poppins'] ">
-                            List of Jobs
-                        </div>
-                    </div>
-                    <br/>
-        <div className="text-right pr-20">
-          <Search onChange={handleSearch} value={searchQuery}/>
+      <div className=" h-32  bg-gray-100 flex items-center justify-center"  style={{width:'100vw'}}>
+        <div className="text-black text-3xl font-medium font-['Poppins']">
+          List of Jobs
         </div>
+      </div>
+      <br />
+      <div className="text-right pr-10">
+        <Search onChange={handleSearch} value={searchQuery} />
+      </div>
       {/* </div><br /> */}
-      <div className="flex w-100 place-content-center text-black text-[25] font-medium font-['Poppins'] pt-10 pr-20 pl-20 ">
-        <table className="table-auto w-full border border-collapse">
+      <div class="w-screen flex justify-center p-10 font-poppins text-[12px]">
+        <table class="w-screen mx-auto border border-collapse">
           <thead>
             <tr>
               <th className="th">Job ID</th>
               <th className="th">Company Name</th>
-              <th className="th">Company Website</th>
+              <th className="th">Client Name</th>
               <th className="th">Job Title</th>
               <th className="th">Job Category</th>
               <th className="th">Job Type</th>
               <th className="th">Location</th>
+              <th className="th">Workplace Type</th>
               <th className="th">Skills</th>
               <th className="th">Experience</th>
+              <th className="th">seniority Level</th>
               <th className="th">Qualification</th>
               <th className="th">Application Link</th>
               <th className="th">Job Description</th>
+              <th className="th">Screening Questions</th>
               <th className="th">Active</th>
               <th className="th">Actions</th>
             </tr>
           </thead>
           <tbody>
             {searchQuery ?
-            (filteredJobs.map((job, index) => (
-              <tr key={job._id} className="border-t">
-                <td className="td">{job._id}</td>
-                <td className="td">{job.companyName}</td>
-                <td className="td">{job.companyWebsite}</td>
-                <td className="td">{job.jobTitle}</td>
-                <td className="td">{job.jobCategory}</td>
-                <td className="td">{job.jobType}</td>
-                <td className="td">{job.location}</td>
-                <td className="td">{job.skills}</td>
-                <td className="td">{job.experience}</td>
-                <td className="td">{job.qualification}</td>
-                <td className="td">{job.applnLink}</td>
-                <td className="td">{job.jobDescription}</td>
-                <td className="td">{job.active}</td>
-                <td className="td"><button className={styles.link} onClick={() => deleteById(job._id)}>Delete</button>
-                <button className={styles.link} onClick={() => router.push(`/admin/updateJob?id=${job._id}`)}>Update</button></td>
-              </tr>
-            ))):
+              (filteredJobs.map((job, index) => (
+                <tr key={job._id} className="border-t">
+                  <td className="td">{job._id}</td>
+                  <td className="td">{job.companyName}</td>
+                  <td className="td">{job.clientName}</td>
+                  <td className="td">{job.jobTitle}</td>
+                  <td className="td">{job.jobCategory}</td>
+                  <td className="td">{job.jobType}</td>
+                  <td className="td">{job.location}</td>
+                  <td className="td">{job.workplaceType}</td>
+                  <td className="td">{job.skills}</td>
+                  <td className="td">{job.experience}</td>
+                  <td className="td">{job.seniorityLevel}</td>
+                  <td className="td">{job.qualification}</td>
+                  <td className="td">{job.applnLink}</td>
+                  <td className="td">{job.jobDescription}</td>
+                  <td className="td">{job.selectedQuestions.join(',')}</td>
+                  <td className="td">{job.active}</td>
+                  <td className="td"><button className={styles.link} onClick={() => deleteById(job._id)}>Delete</button>
+                    <button className={styles.link} onClick={() => router.push(`/admin/updateJob?id=${job._id}`)}>Update</button></td>
+                </tr>
+              ))) :
               (jobs.map((job, index) => (
-              <tr key={job._id} className="border-t">
-                <td className="td">{job._id}</td>
-                <td className="td">{job.companyName}</td>
-                <td className="td">{job.companyWebsite}</td>
-                <td className="td">{job.jobTitle}</td>
-                <td className="td">{job.jobCategory}</td>
-                <td className="td">{job.jobType}</td>
-                <td className="td">{job.location}</td>
-                <td className="td">{job.skills}</td>
-                <td className="td">{job.experience}</td>
-                <td className="td">{job.qualification}</td>
-                <td className="td">{job.applnLink}</td>
-                <td className="td">{job.jobDescription}</td>
-                <td className="td">{job.active}</td>
-                <td className="td"><button className={styles.link} onClick={() => deleteById(job._id)}>Delete</button>
-                <button className={styles.link} onClick={() => router.push(`/admin/updateJob?id=${job._id}`)}>Update</button></td>
-              </tr>
-            )))}
+                <tr key={job._id} className="border-t">
+                  <td className="td">{job._id}</td>
+                  <td className="td">{job.companyName}</td>
+                  <td className="td">{job.clientName}</td>
+                  <td className="td">{job.jobTitle}</td>
+                  <td className="td">{job.jobCategory}</td>
+                  <td className="td">{job.jobType}</td>
+                  <td className="td">{job.location}</td>
+                  <td className="td">{job.workplaceType}</td>
+                  <td className="td">{job.skills}</td>
+                  <td className="td">{job.experience}</td>
+                  <td className="td">{job.seniorityLevel}</td>
+                  <td className="td">{job.qualification}</td>
+                  <td className="td">{job.applnLink}</td>
+                  <td className="td">{job.jobDescription}</td>
+                  <td className="td">{job.selectedQuestions.join(',')}</td>
+                  <td className="td">{job.active}</td>
+                  <td className="td"><button className={styles.link} onClick={() => deleteById(job._id)}>Delete</button>
+                    <button className={styles.link} onClick={() => router.push(`/admin/updateJob?id=${job._id}`)}>Update</button></td>
+                </tr>
+              )))}
           </tbody>
         </table>
       </div>
-    {/* </div> */}
-     </div>
+      {/* </div> */}
+    </div>
   )
 }
 

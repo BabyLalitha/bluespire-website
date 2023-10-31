@@ -11,10 +11,10 @@ export default async function crudJob(req, res) {
     // app.use(bodyParser.json());
     if (req.method === 'POST') {
         try {
-            const {companyName,companyWebsite,jobTitle,jobCategory,jobType,location,skills,experience,qualification,applnLink,jobDescription,active} = req.body;
+            const {companyName,clientName,jobTitle,jobCategory,jobType,location,workplaceType,skills,experience,qualification,seniorityLevel,applnLink,jobDescription,active,selectedQuestions} = req.body;
 
             // Create a new document using the Mongoose model
-            const newData = new Jobs({ companyName,companyWebsite,jobTitle,jobCategory,jobType,location,skills,experience,qualification,applnLink,jobDescription,active });
+            const newData = new Jobs({ companyName,clientName,jobTitle,jobCategory,jobType,location,workplaceType,skills,experience,qualification,seniorityLevel,applnLink,jobDescription,active,selectedQuestions });
 
             // Save the document to the database
             await newData.save();
