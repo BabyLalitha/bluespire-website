@@ -19,7 +19,8 @@ export const links = [
     },
     {
       name: "Career",
-      submenu: true,
+      submenu: false,
+      link: "/career",
       sublinks: [
         {
           Head: "Career",
