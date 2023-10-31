@@ -17,9 +17,7 @@
   }
 }
 
-body {
-  
-}
+body {}
 
 @layer components {
   .form-text {
@@ -28,15 +26,13 @@ body {
 }
 
 @layer components {
-  .th{
+  .th {
     @apply sticky top-0 bg-gray-100 text-center;
   }
-  }
+}
 
 @layer components {
-  .td{
-      @apply border-r align-top text-center;
-    }
+  .td {
+    @apply border-r align-top text-center;
+  }
 }
-  
-

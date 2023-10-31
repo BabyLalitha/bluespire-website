@@ -4,7 +4,7 @@ import HomeImageOne from './../public/assets/homeImg01.png';
 
 function HomeThird() {
     return (
-        <div>
+        <div className='max-w-screen-2xl mx-auto'>
             <div className='my-16'>
                 <div className='w-[100%] h-auto flex flex-col md:flex-row justify-center items-center'>
                     <div className='h-full w-[100%] md:w-1/2'>
