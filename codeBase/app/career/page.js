@@ -32,7 +32,7 @@ const ImageComponent = () => {
         <input type="text" style={{height:'50px', borderRadius:'20px', width:'90%',justifyContent:'center',alignItems:'center',alignContent:'center'}} id="searchInput" placeholder="Search by job title....."/>
         <div  >
           {/* <button style={{alignItem:'center',display:'flex', justifyContent:'center'}}> */}
-            <button style={{marginLeft:'-295%',width:'100%',color:'white' ,background: '#065593', borderRadius: 105,height:'50px',width:'300%' }} on>
+            <button style={{marginLeft:'-295%',width:'100%',color:'white' ,background: '#065593', borderRadius: 105,height:'50px',width:'300%' }} >
             search
           
           </button>
