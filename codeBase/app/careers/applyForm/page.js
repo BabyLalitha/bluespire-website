@@ -50,8 +50,8 @@ function ApplyForm() {
 
     return (
         <div>
-            <div className=" h-32 bg-gray-100 flex items-center justify-center font-poppins">
-                <div className="text-black text-[15.67px]   font-medium  ">
+            <div className=" bg-gray-100 flex items-center justify-center font-poppins" style={{height: '50px'}}>
+                <div className="text-black text-[22.67px] font-medium">
                     {job.title}
                 </div>
             </div>
