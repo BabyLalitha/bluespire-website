@@ -53,7 +53,7 @@ const JD = () => {
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  ">Experience level: </span>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-light  ">{Data?.seniorityLevel}<br /></span>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  ">Experience Length:</span>
-                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal"> {Data?.experience} years<br /></span>
+                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal"> {Data?.experience} year(s)<br /></span>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  ">Location: </span>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-light  ">{Data?.location}<br /></span>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  "> Job type:</span>
@@ -64,8 +64,9 @@ const JD = () => {
                 <div className="text-black text-[18.67px] leading-[44.44px] font-bold" style={{ marginLeft: '23px', marginRight: '23px' }}>Job description<br /></div>
                 <div className=" h-auto 00.11px]" style={{ marginLeft: '23px', marginRight: '23px' }}>
                     <span className="text-black text-[18.67px] leading-[44.44px] font-light">
-                        We are searching for a Laravel developer to build web applications for our company. In this role, you will design and create projects using Laravel framework and PHP, and assist the team in delivering high-quality web applications, services, and tools for our business.<br /><br />
-                        To ensure success as a Laravel developer you should be adept at utilizing Laravel's GUI and be able to design a PHP application from start to finish. A top-notch Laravel developer will be able to leverage their expertise and experience of the framework to independently produce complete solutions in a short turnaround time.<br /><br />
+                        {/* We are searching for a Laravel developer to build web applications for our company. In this role, you will design and create projects using Laravel framework and PHP, and assist the team in delivering high-quality web applications, services, and tools for our business.<br /><br /> */}
+                        {/* To ensure success as a Laravel developer you should be adept at utilizing Laravel's GUI and be able to design a PHP application from start to finish. A top-notch Laravel developer will be able to leverage their expertise and experience of the framework to independently produce complete solutions in a short turnaround time.<br /><br /> */}
+                        {Data?.jobDescription}<br /><br /> 
                     </span>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-semibold">Laravel Developer Requirements:<br /></span>
                     {/* <span className="text-black text-[18.67px] leading-[44.44px] font-light"><br /></span> */}
