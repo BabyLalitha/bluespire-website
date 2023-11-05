@@ -28,8 +28,7 @@ function ApplyForm() {
     };
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
-    const jobTitle = searchParams.get('jobTitle');
-    // const job = jobData.find(job => job.id === parseInt(id));
+    const job = jobData.find(job => job.id === parseInt(id));
     // const handleSubmit = async (e) => {
     //   e.preventDefault();
 
@@ -52,13 +51,13 @@ function ApplyForm() {
     return (
         <div>
             <div className=" bg-gray-100 flex items-center justify-center font-poppins" style={{height: '50px'}}>
-                <div className="text-black text-[18.67px] font-medium">
-                    {jobTitle}-{id}
+                <div className="text-black text-[22.67px] font-medium">
+                    {/* {job.title} */}
                 </div>
             </div>
             <div className=' relative flex lg:justify-center md:justify-center justify-center font-medium  font-poppins' style={{ paddingBottom: '150px', }}>
                 <div className='apply-card'>
-                    <form action={`http://127.0.0.1:3000/career/applyForm?id=${id}&jobTitle=${jobTitle}upload`} method='POST' encType="multipart/form-data">
+                    <form action='http://10.216.9.140:3001/upload' method='POST' encType="multipart/form-data">
                         <div className='info'>
                             <section>
                                 <div className='text-black text-[15.67px]   leading-[44.44px] font-semibold'>

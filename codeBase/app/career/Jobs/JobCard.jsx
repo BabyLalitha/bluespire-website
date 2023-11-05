@@ -24,7 +24,7 @@ export default function JobCard(props) {
             
             <div classname='grid ' style={{margin:'10px'}}>
             <h3 className='  font-Poppins  text-stone-600 lg:text-[10px] md:text-[8px] text-sm font-semibold 'style={{margin:'0'}}>{props.companyName}</h3>
-            <h3 className='  font-Poppins  text-stone-600 lg:text-[20px] md:text-[15px] sm:text-[8px] font-semibold' style={{margin:'0'}} > {props.jobTitle} ({props.experience} year(s))</h3>
+            <h3 className='  font-Poppins  text-stone-600 lg:text-[20px] md:text-[15px] sm:text-[8px] font-semibold' style={{margin:'0'}} > {props.jobTitle}{props.experience}</h3>
             <div className=' grid grid-cols-3'>
             <div style={{ display: 'grid', gridTemplateColumns:'repeat(2, minmax(0, 0.28fr))' }}>
             <Image  className='flex  justify-center align-bottom'
