@@ -28,7 +28,8 @@ function ApplyForm() {
     };
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
-    const job = jobData.find(job => job.id === parseInt(id));
+    const jobTitle = searchParams.get('jobTitle');
+    // const job = jobData.find(job => job.id === parseInt(id));
     // const handleSubmit = async (e) => {
     //   e.preventDefault();
 
@@ -51,8 +52,8 @@ function ApplyForm() {
     return (
         <div>
             <div className=" bg-gray-100 flex items-center justify-center font-poppins" style={{height: '50px'}}>
-                <div className="text-black text-[22.67px] font-medium">
-                    {/* {job.title} */}
+                <div className="text-black text-[18.67px] font-medium">
+                    {jobTitle}-{id}
                 </div>
             </div>
             <div className=' relative flex lg:justify-center md:justify-center justify-center font-medium  font-poppins' style={{ paddingBottom: '150px', }}>
