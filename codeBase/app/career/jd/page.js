@@ -1,7 +1,8 @@
 'use client'
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import jobData from '../../careers/jobsData.json';
+import jobData from '../../career/jobsData.json';
 import { useSearchParams } from 'next/navigation';
 
 const JD = () => {
@@ -10,20 +11,20 @@ const JD = () => {
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
     const ApplyNow = () => {
-        router.push(`/careers/applyForm?id=${id}`);
+        router.push(`/career/applyForm?id=${id}`);
       };
     //   console.log('router.query:', router.query);
     //   console.log('jobData:', jobData);
-    const job = jobData.find(job => job.id === parseInt(id));
-    if (!job) return <div>Job not found</div>;
-
+    // const job = jobData.find(job => job.id === parseInt(id));
+    // if (!job) return <div>Job not found</div>;
+    const [Data, setJobData] = useState(null);
     useEffect(() => {
     // Fetch data from the API route
-    fetch('/api/crudJob')
+    fetch(`/api/getJobById?id=${id}`)
       .then((response) => response.json())
       .then((data) => {
-        setJobs(data); // Set the initial data to jobs state
-        setFilteredJobs(data); // Set the same data to filteredJobs
+        setJobData(data); // Set the initial data to jobs state
+        console.log('Fetched data:', data);
       })
       .catch((error) => console.error('Error fetching data:', error));
 
@@ -37,7 +38,7 @@ const JD = () => {
         <>
             <div className="bg-gray-100 flex items-center justify-center font-poppins" style={{height:'50px'}}>
                 <div className="text-black text-[18.67px] leading-[44.44px]  font-medium  ">
-                {job.title}
+                {Data?.jobTitle}-{Data?._id}
                 </div>
             </div>
             <div className="mx-auto p-8 font-poppins"></div>
@@ -49,17 +50,17 @@ const JD = () => {
                 </div>
                 <div className=" h-auto 87.78px] " style={{marginLeft:'23px'}}>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  ">Minimum Qualification:</span>
-                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal"> Bachelor<br /></span>
+                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal"> {Data?.qualification}<br /></span>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  ">Experience level: </span>
-                    <span className="text-black text-[18.67px] leading-[44.44px]  font-light  ">Mid level<br /></span>
+                    <span className="text-black text-[18.67px] leading-[44.44px]  font-light  ">{Data?.seniorityLevel}<br /></span>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  ">Experience Length:</span>
-                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal"> 2 years<br /></span>
+                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal"> {Data?.experience} years<br /></span>
                     <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  ">Location: </span>
-                    <span className="text-black text-[18.67px] leading-[44.44px]  font-light  ">San Francisco, USA<br /></span>
-                    <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  ">Application Deadline:</span>
-                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal"> 12/08/2023<br /></span>
-                    <span className="text-black text-[18.67px] leading-[44.44px]  font-semibold  ">Salary Range: </span>
-                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal">$ 105,000 - 150,000</span>
+                    <span className="text-black text-[18.67px] leading-[44.44px]  font-light  ">{Data?.location}<br /></span>
+                    <span className="text-black text-[18.67px] leading-[44.44px]  font-bold  "> Job type:</span>
+                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal"> {Data?.jobType}<br /></span>
+                    <span className="text-black text-[18.67px] leading-[44.44px]  font-semibold  ">Work place type: </span>
+                    <span className="text-black text-[18.67px] leading-[44.44px]  font-normal">{Data?.workplaceType}</span>
                 </div>
                 <div className="text-black text-[18.67px] leading-[44.44px] font-bold"style={{marginLeft:'23px', marginRight:'23px'}}>Job description<br /></div>
                 <div className=" h-auto 00.11px]"style={{marginLeft:'23px', marginRight:'23px'}}>

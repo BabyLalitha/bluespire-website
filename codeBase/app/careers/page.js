@@ -12,7 +12,7 @@ const CareersPage = () => {
           <div key={job.id}>
             {/* <h2>{job.title}</h2> */}
             {/* <p>{job.description}</p> */}
-            <Link href={`/careers/jd?id=${job.id}`} passHref>
+            <Link href={`/career/jd?id=${job.id}`} passHref>
               {job.title}
             </Link>
           </div>

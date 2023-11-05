@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import jobData from '../../careers/jobsData.json';
+import jobData from '../../career/jobsData.json';
 // import { useLocation } from 'react-router-dom';
 // import axios from 'axios';
 import { useState } from 'react';
@@ -52,7 +52,7 @@ function ApplyForm() {
         <div>
             <div className=" bg-gray-100 flex items-center justify-center font-poppins" style={{height: '50px'}}>
                 <div className="text-black text-[22.67px] font-medium">
-                    {job.title}
+                    {/* {job.title} */}
                 </div>
             </div>
             <div className=' relative flex lg:justify-center md:justify-center justify-center font-medium  font-poppins' style={{ paddingBottom: '150px', }}>

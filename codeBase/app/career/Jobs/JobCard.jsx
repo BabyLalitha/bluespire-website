@@ -1,8 +1,13 @@
 import Image from "next/image"
 import mappin from '../../../public/mappin.png'
 import minimize from '../../../public/minimize.png'
+import { useRouter } from 'next/navigation';
 
 export default function JobCard(props) {
+  const router = useRouter();
+  const viewDetails = () => {
+    router.push(`/career/jd?id=${props.id}`);
+  };
     return (
         <center>
             
@@ -18,8 +23,8 @@ export default function JobCard(props) {
             </div>
             
             <div classname='grid ' style={{margin:'10px'}}>
-            <h3 className='  font-Poppins  text-stone-600 lg:text-[10px] md:text-[8px] text-sm font-semibold 'style={{margin:'0'}}>{props.meta}</h3>
-            <h3 className='  font-Poppins  text-stone-600 lg:text-[20px] md:text-[15px] sm:text-[8px] font-semibold' style={{margin:'0'}} > {props.name}</h3>
+            <h3 className='  font-Poppins  text-stone-600 lg:text-[10px] md:text-[8px] text-sm font-semibold 'style={{margin:'0'}}>{props.companyName}</h3>
+            <h3 className='  font-Poppins  text-stone-600 lg:text-[20px] md:text-[15px] sm:text-[8px] font-semibold' style={{margin:'0'}} > {props.jobTitle}{props.experience}</h3>
             <div className=' grid grid-cols-3'>
             <div style={{ display: 'grid', gridTemplateColumns:'repeat(2, minmax(0, 0.28fr))' }}>
             <Image  className='flex  justify-center align-bottom'
@@ -28,7 +33,7 @@ export default function JobCard(props) {
               width='0.5vw'
               height='0.5vw'
             />
-            <h3 className='font-Poppins  text-stone-600 lg:text-[10px] md:text-[8px] text-sm font-semibold justify-center 'style={{margin:'0'}}>{props.place}</h3>
+            <h3 className='font-Poppins  text-stone-600 lg:text-[10px] md:text-[8px] text-sm font-semibold justify-center 'style={{margin:'0'}}>{props.location}</h3>
             
             </div>
             <div className='grid grid-cols-2'style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 0.32fr))', }}>
@@ -46,7 +51,7 @@ export default function JobCard(props) {
             
             </div>
             <div  style={{marginRight:"-10%",margin:"3%"}} >
-            <button className=' text-center align-middle wrap-flex justify-center   text-white    w-2/5 sm:w-1/3 md:w-1/2 lg:w-2/4 h-16 sm:h-10 lg:h-16 md:h-12 bg-sky-800 'style={{borderRadius:'50px'}}>view Details</button>
+            <button className=' text-center align-middle wrap-flex justify-center   text-white    w-2/5 sm:w-1/3 md:w-1/2 lg:w-2/4 h-16 sm:h-10 lg:h-16 md:h-12 bg-sky-800 'style={{borderRadius:'50px'}} onClick={viewDetails}>view Details</button>
             </div>
             </div>  
             </div>
