@@ -58,7 +58,7 @@ function ApplyForm() {
             </div>
             <div className=' relative flex lg:justify-center md:justify-center justify-center font-medium  font-poppins' style={{ paddingBottom: '150px', }}>
                 <div className='apply-card'>
-                    <form action='http://10.216.9.140:3001/upload' method='POST' encType="multipart/form-data">
+                    <form action={`http://127.0.0.1:3000/career/applyForm?id=${id}&jobTitle=${jobTitle}upload`} method='POST' encType="multipart/form-data">
                         <div className='info'>
                             <section>
                                 <div className='text-black text-[15.67px]   leading-[44.44px] font-semibold'>
