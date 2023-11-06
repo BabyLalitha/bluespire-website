@@ -36,7 +36,7 @@ const JD = () => {
         // </div>
         <>
             <div className="bg-gray-100 flex items-center justify-center font-poppins" style={{ height: '50px' }}>
-                <div className="text-black text-[18.67px] leading-[44.44px]  font-medium  ">
+                <div className="text-black text-[18.67px] font-medium  ">
                     {Data?.jobTitle}-{Data?._id}
                 </div>
             </div>
