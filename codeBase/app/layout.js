@@ -1,6 +1,5 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-// import { useEffect } from 'react'
 import './globals.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
