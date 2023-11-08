@@ -7,53 +7,53 @@ import instagram from './../public/assets/instagram.svg';
 const Footer = () => {
   return (
 
-    <footer class="bg-gray-50">
-      <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div class="md:flex md:justify-between">
-          <div class="mb-6 md:mb-0 flex flex-col justify-center">
-            <a href="/" class="flex items-center">
-              <Image src={bslogo} class="h-28 w-auto mr-3" alt="bluespire logo" />
+    <footer className="bg-gray-50">
+      <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div className="md:flex md:justify-between">
+          <div className="mb-6 md:mb-0 flex flex-col justify-center">
+            <a href="/" className="flex items-center">
+              <Image src={bslogo} className="h-28 w-auto mr-3" alt="bluespire logo" />
             </a>
           </div>
-          <div class="grid grid-cols-1 gap-8 sm:gap-16 sm:grid-cols-2 ">
+          <div className="grid grid-cols-1 gap-8 sm:gap-16 sm:grid-cols-2 ">
             <div>
-              <h2 class="mb-3 text-sm font-semibold text-blue uppercase">Services</h2>
-              <ul class="text-gray-500 font-medium grid grid-cols-2 gap-2 gap-x-8">
+              <h2 className="mb-3 text-sm font-semibold text-blue uppercase">Services</h2>
+              <ul className="text-gray-500 font-medium grid grid-cols-2 gap-2 gap-x-8">
                 <li>
-                  <a href="/" class="hover:text-blue">Cloud Solution</a>
+                  <a href="/" className="hover:text-blue">Cloud Solution</a>
                 </li>
                 <li>
-                  <a href="/" class="hover:text-blue">Kafka Distribution</a>
+                  <a href="/" className="hover:text-blue">Kafka Distribution</a>
                 </li>
                 <li>
-                  <a href="/" class="hover:text-blue">middleware solution</a>
+                  <a href="/" className="hover:text-blue">middleware solution</a>
                 </li>
                 <li>
-                  <a href="/" class="hover:text-blue">planning Analytics</a>
+                  <a href="/" className="hover:text-blue">planning Analytics</a>
                 </li>
                 <li>
-                  <a href="/" class="hover:text-blue">Actionable Analytics</a>
+                  <a href="/" className="hover:text-blue">Actionable Analytics</a>
                 </li>
                 <li>
-                  <a href="/" class="hover:text-blue">Agile Enterprises</a>
+                  <a href="/" className="hover:text-blue">Agile Enterprises</a>
                 </li>
                 <li>
-                  <a href="/" class="hover:text-blue">Customer Experience</a>
+                  <a href="/" className="hover:text-blue">Customer Experience</a>
                 </li>
               </ul>
             </div>
             <div>
-              <ul class="text-gray-500 font-medium grid grid-cols-2 gap-2 gap-x-8">
+              <ul className="text-gray-500 font-medium grid grid-cols-2 gap-2 gap-x-8">
                 <ul>
-                  <h2 class="mb-3 text-sm font-semibold text-blue uppercase">Company</h2>
+                  <h2 className="mb-3 text-sm font-semibold text-blue uppercase">Company</h2>
                   <li>
-                    <a href="/" class="hover:text-blue">About Us</a>
+                    <a href="/" className="hover:text-blue">About Us</a>
                   </li>
                   <li>
-                    <a href="/" class="hover:text-blue">Team</a>
+                    <a href="/" className="hover:text-blue">Team</a>
                   </li>
                   <li>
-                    <a href="/" class="hover:text-blue">Contact Us</a>
+                    <a href="/" className="hover:text-blue">Contact Us</a>
                   </li>
                 </ul>
                 <ul className='flex flex-col justify-center items-center'>
@@ -68,12 +68,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <hr class="my-6 border-gray-400 sm:mx-auto lg:my-8" />
-        <div class="sm:flex sm:items-center sm:justify-between">
-          <span class="text-sm text-gray-500 sm:text-center">
+        <hr className="my-6 border-gray-400 sm:mx-auto lg:my-8" />
+        <div className="sm:flex sm:items-center sm:justify-between">
+          <span className="text-sm text-gray-500 sm:text-center">
             © Blue spire Inc. 2019. All Rights Reserved.
           </span>
-          <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0 items-center">
+          <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0 items-center">
             <div className='text-gray-500'>Follow Us: </div>
             <div className='bg-blue h-12 w-12 rounded-full flex items-center justify-center'>
               <a href="https://www.linkedin.com/company/blue-spire-inc/mycompany/" target='_blank' className="z-10 text-white hover:text-gray-900 text-xl">

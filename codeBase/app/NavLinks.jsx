@@ -4,10 +4,16 @@ import { links } from "./MyLinks.js";
 
 const NavLinks = ({ navigate }) => {
     const [heading, setHeading] = useState("");
+
+    const uid = function(){
+        const uuid = Date.now().toString(36) + Math.random().toString(36).substr(2);
+        console.log(uuid);
+        return uuid;
+    }
     return (
         <>
             {links.map((link) => (
-                <div className="group text-blue">
+                <div key={link.id*Math.random()} className="group text-blue">
                     <div className="px-1 text-left md:cursor-pointer group hover:border-b-4 md:hover:border-blue">
                         <h1
                             className="py-3 flex justify-between items-center md:pr-0 pr-5 group"
@@ -35,9 +41,9 @@ const NavLinks = ({ navigate }) => {
                                 <div className="absolute hidden top-16 left-0 group-hover:md:block hover:md:block w-[100%] shadow-lg">
                                     <div className="bg-white shadow grid grid-cols-1 gap-10">
                                         {link.sublinks.map((mysublinks) => (
-                                            <div className="w-[50%] grid grid-cols-2 gap-1 pl-20 py-6">
+                                            <div key={mysublinks.sublink.id*Math.random()} className="w-[50%] grid grid-cols-2 gap-1 pl-20 py-6">
                                                 {mysublinks.sublink.map((slink) => (
-                                                    <li className="text-sm my-1 hover:bg-gray-100 px-2 py-1">
+                                                    <li key={slink.id*Math.random()} className="text-sm my-1 hover:bg-gray-100 px-2 py-1">
                                                         <span
                                                             onClick={() => navigate(slink.link)}
                                                         >
@@ -61,14 +67,14 @@ const NavLinks = ({ navigate }) => {
                         `}
                     >
                         {link.submenu && link.sublinks.map((slinks) => (
-                            <div>
+                            <div key={slinks.sublink.id*Math.random()}>
                                 <div>
                                     <div
                                         className={`${heading === link.name ? "md:hidden" : "hidden"
                                             }`}
                                     >
                                         {slinks.sublink.map((slink) => (
-                                            <li className="py-3 pl-14">
+                                            <li key={slink.id*Math.random()} className="py-3 pl-14">
                                                 <Link href={slink.link}>{slink.name}</Link>
                                             </li>
                                         ))}
