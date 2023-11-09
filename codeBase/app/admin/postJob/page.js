@@ -46,7 +46,7 @@ function Newjob() {
         fetch('/api/getScreening')
             .then((response) => response.json())
             .then((data) => setScreeningQuestions(data))
-            .catch((error) => console.error('Error fetching data:', error));
+            .catch((error) => console.log('Error fetching data:', error));
     });
 
     const displayQuestions = () => {

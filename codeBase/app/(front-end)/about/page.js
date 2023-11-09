@@ -1,14 +1,14 @@
 'use client';
 
-import img from '../../public/Rectangle.png';
-import img2 from '../../public/aboutImg2.png';
-import styles from '../../styles/about.module.css';
+import img from '../../../public/Rectangle.png';
+import img2 from '../../../public/aboutImg2.png';
+import styles from '../../../styles/about.module.css';
 import Image from 'next/image'
 import LeaderCard from './LeaderCard';
-import teja from '../../public/teja.jpg';
-import kiran from '../../public/kiran.jpg';
-import chandra from '../../public/chandra.jpg'
-import sample from '../../public/white.png'
+import teja from '../../../public/teja.jpg';
+import kiran from '../../../public/kiran.jpg';
+import chandra from '../../../public/chandra.jpg'
+import sample from '../../../public/white.png'
 import { useRouter } from 'next/navigation';
 
 function About() {
