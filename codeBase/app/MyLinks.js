@@ -7,13 +7,15 @@ export const links = [
         {
           Head: "Service",
           sublink: [
-            { name: "Cloud Solution", link: "/cloud-solution", id:2 },
-            { name: "Kafka Solution", link: "/kafka-solution", id:3 },
-            { name: "Middleware Solution", link: "/middleware-solution", id:4 },
-            { name: "Planning Analytics", link: "/planing-analytics", id:5 },
-            { name: "Actionable Analytics", link: "/actionable-analytics",id:6 },
-            { name: "Agile Enterprise", link: "/agile-enterprises", id:7 },
-            { name: "Customer Experience", link: "/customer-experience", id:8},
+
+            { name: "Cloud Solution", link: "services/cloud" },
+            { name: "Kafka Solution", link: "services/kafka" },
+            { name: "Middleware Solution", link: "services/middleware" },
+            { name: "Planning Analytics", link: "services/planing-analytics" },
+            { name: "Actionable Analytics", link: "services/actionable-analytics" },
+            { name: "Agile Enterprise", link: "services/agile-enterprises" },
+            { name: "Customer Experience", link: "services/customer-experience" },
+
           ],
         }
       ],
