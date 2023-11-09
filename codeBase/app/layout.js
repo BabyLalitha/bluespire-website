@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         </section>
         <section>
           {/* <div className='bg-blue h-screen flex justify-center'>Commmon Layout...</div> */}
-         <Footer />
+          <Footer />
         </section>
 
         {/*********** ion-icon installation. ****************/}
