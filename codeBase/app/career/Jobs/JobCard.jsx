@@ -12,7 +12,7 @@ export default function JobCard(props) {
             <div className="  grid lg:grid-cols-3 md:grid-cols-3 sm:grid-rows  " >
             
             <div className='w-[70px] h-[70px] bg-sky-800 rounded-full border justify-center flex align-middle border-sky-800 'style={{margin:'auto',marginLeft:'20px'}}>
-                {/* <div class="w-[24.38px] h-6 relative flex-col justify-start items-start inline-flex"></div> */}
+                {/* <div className="w-[24.38px] h-6 relative flex-col justify-start items-start inline-flex"></div> */}
                 {/* <h3 className='w-[460.57px] h-[50px] font-pop font-Poppins ml-30 text-black text-[25px] font-semibold '>{props.name}</h3> */}
               <h3 className='text-white text-5xl  font-bold flex mb-3 justify-center  align-middle 'style={{marginTop:'8px',marginBottom:'0',textAlign:'center'}}>J</h3>
             </div>

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react'
-import IndexPage from '../page.js'
 import styles from '../../../styles/admin.module.css'
 import { useState, useEffect } from 'react';
 

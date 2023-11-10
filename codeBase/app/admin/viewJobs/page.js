@@ -88,8 +88,8 @@ function Viewjob() {
         <Search onChange={handleSearch} value={searchQuery} />
       </div>
       {/* </div><br /> */}
-      <div class="w-screen flex justify-center p-10 font-poppins text-[12px]">
-        <table class="w-screen mx-auto border border-collapse">
+      <div className="w-screen flex justify-center p-10 font-poppins text-[12px]">
+        <table className="w-screen mx-auto border border-collapse">
           <thead>
             <tr>
               <th className="th">Job ID</th>
