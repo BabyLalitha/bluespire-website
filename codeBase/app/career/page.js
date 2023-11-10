@@ -3,23 +3,24 @@ import React from 'react';
 import styles from '../../styles/careernew.module.css';
 import PeopleCard from './People/PeopleRenderer';
 import JobCard from './Jobs/JobRenderer';
+import Image from 'next/image';
+import career1 from '../../public/career1.png';
 const ImageComponent = () => {
   return (
     <div  style={{backgroundColor:'#F6F7FA'}}>
       
      <div style={{height:'100vh',width:'100vw'}}>
+
       <div >
 
-      <img className={styles.sss}
-      
-        src="/career1.png"
-        
-        
+      <Image className={styles.css}
+        src={career1}
+        alt = "career1 image"
 
       />
       {/* absolute  bottom-11 right-0  w-full h-full flex justify-left items-center */}
       <div className={styles.find }  >
-        <div className='justify-center  align-middle' style={{margin:'auto'}}>
+        <div className='justify-center align-middle' style={{margin:'auto'}}>
         <p className={styles.the}>
           Find A  <span style={{ color: '#065593' }}>Job</span>  That <br />
           <span style={{ color: '#065593' }}>Matches</span> Your <br />
@@ -50,7 +51,6 @@ const ImageComponent = () => {
       </div>  
 
       </div>
-      
 
     </div>
 

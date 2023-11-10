@@ -2,7 +2,7 @@ import React from 'react'
 
 function HomeFourth() {
     return (
-        <div>
+        <div className='max-w-screen-2xl mx-auto'>
             <div>
                 {/* text container */}
                 <div className='text-center w-[100%]'>
@@ -18,7 +18,7 @@ function HomeFourth() {
 
                 {/* box container */}
                 <div className='my-16'>
-                    <div className='w-[80vw] mx-auto grid md:grid-cols-4 grid-cols-2 gap-5 gap-y-20'>
+                    <div className='w-[80vw] grid md:grid-cols-4 grid-cols-2 gap-5 gap-y-20 max-w-screen-2xl mx-auto'>
                         <div className='h-[60px] w-[150px] bg-gray-200 mx-auto'>
                         </div>
                         <div className='h-[60px] w-[150px] bg-gray-200 mx-auto'>

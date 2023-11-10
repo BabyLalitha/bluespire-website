@@ -35,7 +35,7 @@ function PlaningAnalytics() {
               <Image className={style.contentimg100} src={PA1} alt="..." />
             </td>
             <td className={style.textcolumn100}>
-              <p className={style.cardtext100}> Blue Spire has best in class IBM Planning Analytics aka IBM Cognos TM1 practice to provide world-class delivery of IT services with a repository of best practices, reusable components and templates, backed by strong experience in delivering transformational engagements, our TM1  practice accelerates the implementation process and our solutions help customers gain efficiencies related  financial planning, budgeting, forecasting and consolidation there by improving quality of financial information and enhanced decision making.
+              <p className={style.cardtext100}> Blue Spire has best in className IBM Planning Analytics aka IBM Cognos TM1 practice to provide world-className delivery of IT services with a repository of best practices, reusable components and templates, backed by strong experience in delivering transformational engagements, our TM1  practice accelerates the implementation process and our solutions help customers gain efficiencies related  financial planning, budgeting, forecasting and consolidation there by improving quality of financial information and enhanced decision making.
 
               </p>
             </td>
