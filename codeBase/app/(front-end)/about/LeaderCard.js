@@ -1,7 +1,7 @@
 
-import li_icon from '../../public/linkedin.png';
+import li_icon from '../../../public/linkedin.png';
 import Image from 'next/image';
-import styles from '../../styles/about.module.css';
+import styles from '../../../styles/about.module.css';
 
 export default function LeaderCard(props) {
   return (
