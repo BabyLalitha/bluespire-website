@@ -1,5 +1,5 @@
 import React from 'react'
-import HomeLandingImage from './../public/assets/HomeLanding.jpeg'
+import HomeLandingImage from '../public/assets/HomeLanding.jpeg'
 import Image from 'next/image';
 
 function HomeLanding() {
