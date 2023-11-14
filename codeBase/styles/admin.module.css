@@ -1,3 +1,5 @@
+
+
 .title {
     font-size: xx-large;
     text-align: center;
@@ -74,4 +76,54 @@
     border-collapse: collapse;
     width: 100%;
 }
+
+.searchIcon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 5px; /* Adjust the margin as needed for spacing */
+}
+
+.highlight {
+    background-color: yellow; /* Background color for highlighting */
+    color: black; /* Text color for highlighting */
+    font-weight: bold; /* Bold text for highlighting */
+}
+
+/* Initial style for the button (off state) */
+.toggleButton {
+    background-color: #ccc;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Style for the button when it's toggled on (active state) */
+.toggleButton.active {
+    background-color: #007bff;
+}
+
+/* Style for the text inside the button when it's toggled on (active state) */
+/* .toggleButton.active::after {
+    content: "On";
+} */
+
+/* Style for the button when it's toggled off (inactive state) */
+.toggleButton:not(.active) {
+    background-color: #ccc;
+}
+
+/* Style for the text inside the button when it's toggled off (inactive state) */
+/* .toggleButton:not(.active)::after {
+    content: "Off";
+} */
+
+
+
+
+
+
+
 

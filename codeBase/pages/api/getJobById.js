@@ -1,12 +1,13 @@
 import React from 'react'
-import Job from '../models/tblJobs'
+// import Job from '../../models/tblJobs'
+import Jobs from '../../models/Jobs'
 
 async function getJobById(req,res) {
     try{
     const  _id  = req.query.id;
 
   // Use the ID to fetch the resource from your database or data source
-  const item = await Job.findById(_id);
+  const item = await Jobs.findById(_id);
 
     if (!item) {
       return res.status(404).json({ message: 'Item not found' });

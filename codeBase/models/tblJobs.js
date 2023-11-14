@@ -8,7 +8,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/adminmoduleDB', {
 // Create a Mongoose model for your data
 const Schema = mongoose.Schema;
 const JobSchema = new Schema({
-    _id: Number,
+    _id: String,
     role: String,
     type: String,
     location: String,
@@ -16,6 +16,7 @@ const JobSchema = new Schema({
     jobDescription: String,
     skills: String,
     experience: String,
+    active: Boolean,
     selectedQuestions : [Number]
 });
 

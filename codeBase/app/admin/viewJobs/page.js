@@ -4,216 +4,165 @@ import React from 'react'
 import IndexPage from '../page.js'
 import { useState, useEffect } from 'react';
 import styles from '../../../styles/admin.module.css'
-// import Job from '../models/tblJobs'
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import Search from '../../../components/globalSearch/page.js'
+import jQuery from 'jquery'
 
 function Viewjob() {
+  //const [items, setItems] = useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [message, setMessage] = useState('');
+  const [filteredJobs, setFilteredJobs] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
-    //const [items, setItems] = useState([]);
-    const [jobs, setJobs] = useState([]);
-    const [message,setMessage]=useState('');
-    const [update,setUpdate]=useState('');
-    const[saveButton,setSaveButton]=useState(false);
+  const router = useRouter();
 
-    const router=useRouter();
+  useEffect(() => {
+    // Fetch data from the API route
+    fetch('/api/crudJob')
+      .then((response) => response.json())
+      .then((data) => {
+        setJobs(data); // Set the initial data to jobs state
+        setFilteredJobs(data); // Set the same data to filteredJobs
+      })
+      .catch((error) => console.error('Error fetching data:', error));
 
-    useEffect(() => {
-        // Fetch data from the API route
-        fetch('/api/crudJob')
-            .then((response) => response.json())
-            .then((data) => setJobs(data))
-            .catch((error) => console.error('Error fetching data:', error));
-    }, []);
+  }, []);
 
-    const deleteById=async(id)=>{
-        const c=window.confirm("Are you sure you want to delete this job?")
-        if(c){
-        try {
-            const response = await fetch('/api/crudJob', {
-              method: 'DELETE',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ id }), 
-            });
-        
-              if (response.status === 200) {
-                setMessage('Records deleted successfully');
-              } else {
-                setMessage('Error deleting records');
-              }
-            } catch (error) {
-              console.error('Error deleting records:', error);
-              setMessage('Error deleting records');
-            }
-            setJobs((prevJobs) => prevJobs.filter((job) => job._id !== id));
-        }
 
-    }
+  // setFilteredJobs(jobs);
 
-    const updateById=(index)=>{
-      //console.log(jobs[index]._id);
-      setSaveButton(true);
-      setUpdate(index);
-    }
-
-    const Submit=async(index)=>{
-      // console.log(jobs[index]);
-      const idToUpdate=jobs[index]._id;
-      const updateData={"_id":jobs[index]._id,"role":jobs[index].role,"type":jobs[index].type,"location":jobs[index].location,"EmploymentType":jobs[index].EmploymentType,"jobDescription":jobs[index].jobDescription,"skills":jobs[index].skills,"experience":jobs[index].experience,"selectedQuestions":jobs[index].selectedQuestions};
+  const deleteById = async (id) => {
+    const c = window.confirm("Are you sure you want to delete this job?");
+    if (c) {
       try {
         const response = await fetch('/api/crudJob', {
-          method: 'PUT',
+          method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({id:idToUpdate,updateData }), 
+          body: JSON.stringify({ id }),
         });
-    
-          if (response.status === 200) {
-            setMessage('Records deleted successfully');
-          } else {
-            setMessage('Error deleting records');
-          }
-        } catch (error) {
-          console.error('Error deleting records:', error);
+
+        if (response.status === 200) {
+          // Update the message state outside of the fetch block
+          setMessage('Records deleted successfully');
+          // Update the jobs state outside of the fetch block
+          setJobs((prevJobs) => prevJobs.filter((job) => job._id !== id));
+        } else {
+          // Handle error conditions here
           setMessage('Error deleting records');
         }
+      } catch (error) {
+        // Handle fetch errors here
+        console.error('Error deleting records:', error);
+        setMessage('Error deleting records');
+      }
     }
+  };
 
-    const handleInputChange=(e,index,field)=>{
-      const updatedData=[...jobs];
-      if(field==='_id'){
-        updatedData[index]._id=e.target.value;
-      }
-      if(field==='role'){
-        updatedData[index].role=e.target.value;
-      }
-      if(field==='type'){
-        updatedData[index].type=e.target.value;
-      }
-      if(field==='location'){
-        updatedData[index].location=e.target.value;
-      }
-      if(field==='EmploymentType'){
-        updatedData[index].EmploymentType=e.target.value;
-      }
-      if(field==='jobDescription'){
-        updatedData[index].jobDescription=e.target.value;
-      }
-      if(field==='skills'){
-        updatedData[index].skills=e.target.value;
-      }
-      if(field==='experience'){
-        updatedData[index].experience=e.target.value;
-      }
-      setJobs(updatedData);
-    }
+  const handleSearch = (query) => {
+    setSearchQuery(query);
 
-    // const onUpdate=(id)=>{
-    //   router.push({
-    //     pathname : '/admin/updateJob',
-    //     query : {id:id}
-    //   });
-    // }
+    // Implement your search logic here
+    const results = jobs.filter((job) => {
+      const searchFields = job.companyName + job.clientName + job.jobCategory + job.jobTitle + job.jobType + job.location + job.workplaceType + job.skills + job.experience + job.seniorityLevel + job.qualification + job.applnLink + job.jobDescription + job.selectedQuestions;
+      return searchFields.toLowerCase().includes(query.toLowerCase());
+    });
 
-    return (
+    setFilteredJobs(results);
+  };
+  // console.log(jobs[0].active);
 
-        <div className='container'>
-            <div className='row'><IndexPage /></div><br />
-            <div className='row'>
-                <table className='table table-bordered table-hovered'>
-                    <thead>
-                    <tr>
-                        <th>Job ID</th>
-                        <th>Role</th>
-                        <th>Type</th>
-                        <th>Location</th>
-                        <th>Employment Type</th>
-                        <th>Job Description</th>
-                        <th>Skills Required</th>
-                        <th>Experience Required</th>
-                        <th>Screening Questions Ids</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                   {jobs.map((item,index) => (
-                    <tr key={item._id} >
-                            <td>{update===index?
-                            <input type="number"
-                            value={item._id}
-                            onChange={(e) => handleInputChange(e, index,"_id")}
-                            />:
-                            item._id
-                            }</td>
-                            <td>{update===index?
-                            <input type="text"
-                            value={item.role}
-                            onChange={(e) => handleInputChange(e, index,"role")}
-                            />:
-                            item.role
-                            }</td>
-                            <td>{update===index?
-                            <input type="text"
-                            value={item.type}
-                            onChange={(e) => handleInputChange(e, index,"type")}
-                            />:
-                            item.type
-                            }</td>
-                            <td>{update===index?
-                            <input type="text"
-                            value={item.location}
-                            onChange={(e) => handleInputChange(e, index,"location")}
-                            />:
-                            item.location
-                            }</td>
-                            <td>{update===index?
-                            <input type="text"
-                            value={item.EmploymentType}
-                            onChange={(e) => handleInputChange(e, index,"EmploymentType")}
-                            />:
-                            item.EmploymentType
-                            }</td>
-                            <td>{update===index?
-                            <textarea
-                            value={item.jobDescription}
-                            onChange={(e) => handleInputChange(e, index,"jobDescription")}
-                            />:
-                            item.jobDescription
-                            }</td>
-                            <td>{update===index?
-                            <textarea
-                            value={item.skills}
-                            onChange={(e) => handleInputChange(e, index,"skills")}
-                            />:
-                            item.skills
-                            }</td>
-                            <td>{update===index?
-                            <textarea
-                            value={item.experience}
-                            onChange={(e) => handleInputChange(e, index,"experience")}
-                            />:
-                            item.experience
-                            }</td>
-                            <td>{update===index?
-                            <input type="text"
-                            value={item.selectedQuestions.join(',')}
-                            onChange={(e) => handleInputChange(e, index,"selectedQuestions")}
-                            />:
-                            item.selectedQuestions.join(',')
-                            }
-                              </td>
-                            <td><button className={styles.link} onClick={()=>deleteById(item._id)}>Delete</button><button className={styles.link}>Update</button>
-                            {update===index && <button className={styles.link} onClick={()=>Submit(index)}>Save</button>}
-                            </td>
-                    </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </div>
+  return (
+    <div>
+      {/* <div className='container'> */}
+      {/* <div className='row'><IndexPage /> */}
+      <div className=" h-32  bg-gray-100 flex items-center justify-center"  style={{width:'100vw'}}>
+        <div className="text-black text-3xl font-medium font-['Poppins']">
+          List of Jobs
         </div>
-    )
+      </div>
+      <br />
+      <div className="text-right pr-10">
+        <Search onChange={handleSearch} value={searchQuery} />
+      </div>
+      {/* </div><br /> */}
+      <div className="w-screen flex justify-center p-10 font-poppins text-[12px]">
+        <table className="w-screen mx-auto border border-collapse">
+          <thead>
+            <tr>
+              <th className="th">Job ID</th>
+              <th className="th">Company Name</th>
+              <th className="th">Client Name</th>
+              <th className="th">Job Title</th>
+              <th className="th">Job Category</th>
+              <th className="th">Job Type</th>
+              <th className="th">Location</th>
+              <th className="th">Workplace Type</th>
+              <th className="th">Skills</th>
+              <th className="th">Experience</th>
+              <th className="th">seniority Level</th>
+              <th className="th">Qualification</th>
+              <th className="th">Application Link</th>
+              <th className="th">Job Description</th>
+              <th className="th">Screening Questions</th>
+              <th className="th">Active</th>
+              <th className="th">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {searchQuery ?
+              (filteredJobs.map((job, index) => (
+                <tr key={job._id} className="border-t">
+                  <td className="td">{job._id}</td>
+                  <td className="td">{job.companyName}</td>
+                  <td className="td">{job.clientName}</td>
+                  <td className="td">{job.jobTitle}</td>
+                  <td className="td">{job.jobCategory}</td>
+                  <td className="td">{job.jobType}</td>
+                  <td className="td">{job.location}</td>
+                  <td className="td">{job.workplaceType}</td>
+                  <td className="td">{job.skills}</td>
+                  <td className="td">{job.experience}</td>
+                  <td className="td">{job.seniorityLevel}</td>
+                  <td className="td">{job.qualification}</td>
+                  <td className="td">{job.applnLink}</td>
+                  <td className="td">{job.jobDescription}</td>
+                  <td className="td">{job.selectedQuestions.join(',')}</td>
+                  <td className="td">{job.active}</td>
+                  <td className="td"><button className={styles.link} onClick={() => deleteById(job._id)}>Delete</button>
+                    <button className={styles.link} onClick={() => router.push(`/admin/updateJob?id=${job._id}`)}>Update</button></td>
+                </tr>
+              ))) :
+              (jobs.map((job, index) => (
+                <tr key={job._id} className="border-t">
+                  <td className="td">{job._id}</td>
+                  <td className="td">{job.companyName}</td>
+                  <td className="td">{job.clientName}</td>
+                  <td className="td">{job.jobTitle}</td>
+                  <td className="td">{job.jobCategory}</td>
+                  <td className="td">{job.jobType}</td>
+                  <td className="td">{job.location}</td>
+                  <td className="td">{job.workplaceType}</td>
+                  <td className="td">{job.skills}</td>
+                  <td className="td">{job.experience}</td>
+                  <td className="td">{job.seniorityLevel}</td>
+                  <td className="td">{job.qualification}</td>
+                  <td className="td">{job.applnLink}</td>
+                  <td className="td">{job.jobDescription}</td>
+                  <td className="td">{job.selectedQuestions.join(',')}</td>
+                  <td className="td">{job.active}</td>
+                  <td className="td"><button className={styles.link} onClick={() => deleteById(job._id)}>Delete</button>
+                    <button className={styles.link} onClick={() => router.push(`/admin/updateJob?id=${job._id}`)}>Update</button></td>
+                </tr>
+              )))}
+          </tbody>
+        </table>
+      </div>
+      {/* </div> */}
+    </div>
+  )
 }
 
 export default Viewjob
