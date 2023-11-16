@@ -41,7 +41,7 @@ function Services() {
 
               <ServiceCard
                 image={cloud} // Provide the image URL
-                serviceName="Cloud Solutions" // Provide the heading text
+                serviceName="Cloud Solution" // Provide the heading text
                 destination="services/cloud" // Provide the link URL
               />
                <ServiceCard
