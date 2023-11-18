@@ -23,7 +23,7 @@ const NavLinks = ({ navigate }) => {
                         >
                             {
                                 link.submenu ? link.name :
-                                    (<span onClick={() => navigate(link.name)}>{link.name}</span>)
+                                    (<span onClick={() => navigate("/"+link.name)}>{link.name}</span>)
                             }
 
                             <span className="text-xl md:hidden inline">
@@ -75,7 +75,8 @@ const NavLinks = ({ navigate }) => {
                                     >
                                         {slinks.sublink.map((slink) => (
                                             <li key={slink.id*Math.random()} className="py-3 pl-14">
-                                                <Link href={slink.link}>{slink.name}</Link>
+                                                {/* <Link href={slink.link}>{slink.name}</Link> */}
+                                                <span onClick={()=>navigate(slink.link)}>{slink.name}</span>
                                             </li>
                                         ))}
                                     </div>

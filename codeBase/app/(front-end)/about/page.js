@@ -1,14 +1,14 @@
 'use client';
 
-import img from '../../public/Rectangle.png';
-import img2 from '../../public/aboutImg2.png';
-import styles from '../../styles/about.module.css';
+import img from '../../../public/Rectangle.png';
+import img2 from '../../../public/aboutImg2.png';
+import styles from '../../../styles/about.module.css';
 import Image from 'next/image'
 import LeaderCard from './LeaderCard';
-import teja from '../../public/teja.jpg';
-import kiran from '../../public/kiran.jpg';
-import chandra from '../../public/chandra.jpg'
-import sample from '../../public/white.png'
+import teja from '../../../public/teja.jpg';
+import kiran from '../../../public/kiran.jpg';
+import chandra from '../../../public/chandra.jpg'
+import sample from '../../../public/white.png'
 import { useRouter } from 'next/navigation';
 
 function About() {
@@ -118,7 +118,7 @@ function About() {
         <div >
           <div style={{ color: 'black', paddingBottom: '10px', fontSize: '24px', fontWeight: '700', textAlign: 'center', paddingTop:'20px' }}>High ROI<br /></div>
 
-          <div style={{ color: '#000000', fontSize: '18px', fontWeight: '400', lineHeight: '30px', alignContent: 'center', lineHeight: '30px', wordWrap: 'break-word' }}>
+          <div style={{ color: '#000000', fontSize: '18px', fontWeight: '400', lineHeight: '30px', alignContent: 'center',  wordWrap: 'break-word' }}>
             <div style={{ padding: '20px 5%'  }}>Blue Spires proven and demonstrable track record empowers us to deliver value in each engagement, a fact substantiated by our ever-increasing client base. Our operational excellence ensures every dollar spent by our clients on an outsourcing engagement provides them an enhanced ROI, which is both tangible and measurable.<br /><br />We bring expertise in cutting-edge technology to our client projects. In addition to the state-of-the-art technology, we adopt widely accepted standards in our development process<br /><br />As we march forward, we remain committed to strengthening our skills and expertise towards adding incremental value to our clients businesses by continually moving up the services value chain.<br />Our Technical team is proficient in using industry-standard technology tools and processes. We also make extensive use of our Outsourcing Methodology Process, an iterative product development process that has been implemented successfully time after time.
             </div>
           </div>

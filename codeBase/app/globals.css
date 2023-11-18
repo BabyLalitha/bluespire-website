@@ -17,3 +17,20 @@
   }
 }
 
+@layer components {
+  .form-text {
+    @apply w-96 h-[65] bg-white rounded-[5px] border border-neutral-300 font-[Inter];
+  }
+}
+
+@layer components {
+  .th {
+    @apply sticky top-0 bg-gray-100 text-center;
+  }
+}
+
+@layer components {
+  .td {
+    @apply border-r align-top text-center;
+  }
+}

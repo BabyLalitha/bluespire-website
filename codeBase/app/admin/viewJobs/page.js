@@ -1,12 +1,10 @@
 'use client';
 
 import React from 'react'
-import IndexPage from '../page.js'
 import { useState, useEffect } from 'react';
 import styles from '../../../styles/admin.module.css'
 import { useRouter } from 'next/navigation'
-import Search from '../../../components/globalSearch/page.js'
-import jQuery from 'jquery'
+import Search from '../../../components/search.js'
 
 function Viewjob() {
   //const [items, setItems] = useState([]);
@@ -88,8 +86,8 @@ function Viewjob() {
         <Search onChange={handleSearch} value={searchQuery} />
       </div>
       {/* </div><br /> */}
-      <div class="w-screen flex justify-center p-10 font-poppins text-[12px]">
-        <table class="w-screen mx-auto border border-collapse">
+      <div className="w-screen flex justify-center p-10 font-poppins text-[12px]">
+        <table className="w-screen mx-auto border border-collapse">
           <thead>
             <tr>
               <th className="th">Job ID</th>

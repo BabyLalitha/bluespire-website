@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react'
-import IndexPage from '../page.js'
 import styles from '../../../styles/admin.module.css'
 import { useState, useEffect } from 'react';
+import TextInput from '../../../components/TextInputField.js';
+import Dropdown from '../../../components/DropDownField.js';
 
 function Newjob() {
 
@@ -31,6 +32,81 @@ function Newjob() {
     const [newQuestion, setNewQuestion] = useState('');
     const [showMessage, setShowMessage] = useState(false);
 
+    const workplaceTypeOptions = [
+        {label:'select',value:''},
+        {label:'Onsite',value:'onsite'},
+        {label:'Hybrid',value:'hybrid'},
+        {label:'Remote',value:'remote'}
+    ]
+
+    const jobCategoryOptions = [
+        {label:'select',value:''},
+        {label:'Accounting/Auditing',value:'Accounting/Auditing'},
+        {label:'Administartive',value:'Administartive'},
+        {label:'Advertising',value:'Advertising'},
+        {label:'Analyst',value:'Analyst'},
+        {label:'Art/Creative',value:'Art/Creative'},
+        {label:'Business Development',value:'Business development'},
+        {label:'Consulting',value:'Consulting'},
+        {label:'Customer Service',value:'Customer service'},
+        {label:'Distribution',value:'Distribution'},
+        {label:'Design',value:'Design'},
+        {label:'Engineering',value:'Engineering'},
+        {label:'Finances',value:'Finances'},
+        {label:'Human Resources',value:'Human Resources'},
+        {label:'Information Technology',value:'Information Technology'},
+        {label:'Legal',value:'Legal'},
+        {label:'Management',value:'Management'},
+        {label:'Marketing',value:'Marketing'},
+        {label:'Public Relations',value:'Public Relations'},
+        {label:'Product Management',value:'Product Management'},
+        {label:'Project Management',value:'Project Management'},
+        {label:'Production',value:'Production'},
+        {label:'Quality Assurance',value:'Quality Assurance'},
+        {label:'Sales',value:'Sales'},
+        {label:'Strategy Planning',value:'Strategy Planning'},
+        {label:'Supply Chain',value:'Supply chain'},
+        {label:'Training',value:'Training'},
+        {label:'Others',value:'others'}
+    ]
+
+    const jobTypeOptions=[
+        {label:'select',value:''},
+        {label:'Full Time',value:'Full Time'},
+        {label:'Part Time',value:'Part Time'},
+        {label:'Contract',value:'Contract'},
+        {label:'Temporary',value:'Temporary'},
+        {label:'Volunteer',value:'Volunteer'},
+        {label:'Internship',value:'Internship'}
+    ]
+
+    const experienceOptions = [
+        {label:'select',value:''},
+        {label:'0',value:'0'},
+        {label:'1',value:'1'},
+        {label:'2',value:'2'},
+        {label:'3',value:'3'},
+        {label:'4',value:'4'},
+        {label:'5',value:'5'},
+        {label:'6',value:'6'},
+        {label:'7',value:'7'},
+        {label:'8',value:'8'},
+        {label:'9',value:'9'},
+        {label:'10',value:'10'},
+        {label:'10+',value:'10+'}
+    ]
+
+    const seniorityLevelOptions = [
+        {label:'select',value:''},
+        {label:'Internship',value:'Internship'},
+        {label:'Entry Level',value:'Entry Level'},
+        {label:'Associate',value:'Associate'},
+        {label:'Mid-senior Level',value:'Mid-senior Level'},
+        {label:'Director',value:'Director'},
+        {label:'Executive',value:'Executive'},
+        {label:'Not Applicable',value:'Not Applicable'}
+    ]
+
     const handleAddQuestion1 = () => {
         if (newQuestion.trim() !== '') {
             setQuestions([...questions, newQuestion]);
@@ -41,13 +117,13 @@ function Newjob() {
             // }, 3000);
         }
     }
-    
-    useEffect(() => {
-        fetch('/api/getScreening')
-            .then((response) => response.json())
-            .then((data) => setScreeningQuestions(data))
-            .catch((error) => console.error('Error fetching data:', error));
-    });
+
+    // useEffect(() => {
+    //     fetch('/api/getScreening')
+    //         .then((response) => response.json())
+    //         .then((data) => setScreeningQuestions(data))
+    //         .catch((error) => console.error('Error fetching data:', error));
+    // });
 
     const displayQuestions = () => {
 
@@ -74,7 +150,7 @@ function Newjob() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ companyName, clientName, jobTitle, jobCategory, jobType, location, workplaceType, skills, experience, seniorityLevel, qualification, applnLink, jobDescription, active,selectedQuestions }),
+            body: JSON.stringify({ companyName, clientName, jobTitle, jobCategory, jobType, location, workplaceType, skills, experience, seniorityLevel, qualification, applnLink, jobDescription, active, selectedQuestions }),
         });
         if (response.ok) {
             console.log("added to database");
@@ -120,7 +196,7 @@ function Newjob() {
     // const buttonClass = isToggled ? 'on' : '';
 
     return (
-        <div className='font-poppins'>
+        <div>
             <div className="w-200 h-32 bg-gray-100 flex items-center justify-center">
                 <div className="text-black text-3xl font-medium font-['Poppins'] ">
                     Create Job
@@ -130,25 +206,18 @@ function Newjob() {
             <div className="flex w-100 place-content-center text-black text-[25] font-medium font-['Poppins'] pt-20 ">
                 <form onSubmit={onSubmit}>
                     <div>
-                        {/* <p className="mt-1 text-base leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> */}
-
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-3">
-                                <label htmlFor="companyName" >
-                                    Company Name<span class="text-red-500">*</span>
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        type="text"
-                                        name="companyName"
-                                        id="companyName"
-                                        value={companyName}
-                                        onChange={(e) => setCompanyName(e.target.value)}
-                                        className="form-text"
-                                        placeholder="Name"
-                                        required
-                                    />
-                                </div>
+                                <TextInput
+                                    label="Company Name"
+                                    id="companyName"
+                                    name="companyName"
+                                    type="text"
+                                    value={companyName}
+                                    onChange={(e) => setCompanyName(e.target.value)}
+                                    placeholder="Company Name"
+                                    className="form-text"
+                                />
                             </div>
 
                             <div className="sm:col-span-3 pl-3">
@@ -170,147 +239,78 @@ function Newjob() {
                             </div>
 
                             <div className="sm:col-span-full">
-                                <label htmlFor="jobTitle" >
-                                    Job Title<span class="text-red-500">*</span>
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        id="jobTitle"
-                                        name="jobTitle"
-                                        type="text"
-                                        value={jobTitle}
-                                        onChange={(e) => setJobTitle(e.target.value)}
-                                        className="form-text w-full"
-                                        placeholder="Title"
-                                        required
-                                    />
-                                </div>
+                                <TextInput
+                                    label="Job Title"
+                                    id="jobTitle"
+                                    name="jobTitle"
+                                    type="text"
+                                    value={jobTitle}
+                                    onChange={(e) => setJobTitle(e.target.value)}
+                                    placeholder="Job Title"
+                                    className="form-text w-full"
+                                />
                             </div>
 
                             <div className="sm:col-span-3">
-                                <label htmlFor="jobCategory" >
-                                    Job Category<span class="text-red-500">*</span>
-                                </label>
-                                <div className="mt-2">
-                                    <select
-                                        id="jobCategory"
-                                        name="jobCategory"
-                                        value={jobCategory}
-                                        onChange={(e) => setJobCategory(e.target.value)}
-                                        className="form-text"
-                                        required
-                                    >
-                                        <option>select</option>
-                                        <option>Accounting/Auditing</option>
-                                        <option>Administartive</option>
-                                        <option>Advertising</option>
-                                        <option>Analyst</option>
-                                        <option>Art/creative</option>
-                                        <option>Business development</option>
-                                        <option>Consulting</option>
-                                        <option>Customer Service</option>
-                                        <option>Distribution</option>
-                                        <option>Design</option>
-                                        <option>Engineering</option>
-                                        <option>Finance</option>
-                                        <option>Human Resources</option>
-                                        <option>Information Technology</option>
-                                        <option>Legal</option>
-                                        <option>Management</option>
-                                        <option>Marketing</option>
-                                        <option>Public relations</option>
-                                        <option>Product Management</option>
-                                        <option>Project Management</option>
-                                        <option>Production</option>
-                                        <option>Quality Assurance</option>
-                                        <option>Sales</option>
-                                        <option>Strategy/Planning</option>
-                                        <option>Supply Chain</option>
-                                        <option>Training</option>
-                                        <option>Other</option>
-                                    </select>
-                                </div>
+                                <Dropdown
+                                    label="Job Category"
+                                    id="jobcategory"
+                                    name="jobCategory"
+                                    options={jobCategoryOptions}
+                                    value={jobCategory}
+                                    onChange={(e)=>setJobCategory(e.target.value)}
+                                    className="form-text"
+                                />
                             </div>
 
                             <div className="sm:col-span-3 pl-3">
-                                <label htmlFor="jobType" >
-                                    Job Type<span class="text-red-500">*</span>
-                                </label>
-                                <div className="mt-2">
-                                    <select
-                                        id="jobType"
-                                        name="jobType"
-                                        value={jobType}
-                                        onChange={(e) => setJobType(e.target.value)}
-                                        className="form-text"
-                                        required
-                                    >
-                                        <option>select</option>
-                                        <option>Full Time</option>
-                                        <option>Part Time</option>
-                                        <option>contract</option>
-                                        <option>Internship</option>
-                                        <option>Temporary</option>
-                                        <option>Volunteer</option>
-                                    </select>
-                                </div>
+                                <Dropdown
+                                    label="Job Type"
+                                    id="jobType"
+                                    name="jobType"
+                                    options={jobTypeOptions}
+                                    value={jobType}
+                                    onChange={(e)=>setJobType(e.target.value)}
+                                    className="form-text"
+                                />
                             </div>
 
                             <div className="sm:col-span-3 ">
-                                <label htmlFor="locationName" >
-                                    Job Location<span class="text-red-500">*</span>
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        type="text"
-                                        name="locationName"
-                                        id="locationName"
-                                        value={location}
-                                        onChange={(e) => setLocation(e.target.value)}
-                                        className="form-text"
-                                        placeholder="Location"
-                                        required
-                                    />
-                                </div>
+                                <TextInput
+                                    label="Job Location"
+                                    id="location"
+                                    name="location"
+                                    type="text"
+                                    value={location}
+                                    onChange={(e)=>setLocation(e.target.value)}
+                                    placeholder="Location"
+                                    className="form-text"
+                                />
                             </div>
 
                             <div className="sm:col-span-3 pl-3">
-                                <label htmlFor="workplaceType" >
-                                    Workplace Type<span class="text-red-500">*</span>
-                                </label>
-                                <div className="mt-2">
-                                    <select
-                                        id="workplaceType"
-                                        name="workplaceType"
-                                        value={workplaceType}
-                                        onChange={(e) => setWorkplaceType(e.target.value)}
-                                        className="form-text"
-                                        required
-                                    >
-                                        <option>select</option>
-                                        <option>Onsite</option>
-                                        <option>Hybrid</option>
-                                        <option>Remote</option>
-                                    </select>
-                                </div>
+                                <Dropdown
+                                    label="Workplace Type"
+                                    id="workplaceType"
+                                    name="workplaceType"
+                                    options={workplaceTypeOptions}
+                                    value={workplaceType}
+                                    onChange={(e)=>setWorkplaceType(e.target.value)}
+                                    className="form-text"
+                                />
                             </div>
 
                             <div className="sm:col-span-3">
-                                <label htmlFor="qualification" >
-                                    Qualification<span class="text-red-500">*</span>
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                        type="text"
-                                        name="qualification"
-                                        id="qualification"
-                                        value={qualification}
-                                        onChange={(e) => setQualification(e.target.value)}
-                                        className="form-text"
-                                        placeholder="Qualification"
-                                        required
-                                    />
-                                </div>
+                                <TextInput
+                                    label="Qualification"
+                                    id="qualification"
+                                    name="qualification"
+                                    type="text"
+                                    value={qualification}
+                                    onChange={(e) => setQualification(e.target.value)}
+                                    placeholder="Qualification"
+                                    className="form-text"
+                                />
                             </div>
 
                             <div className="sm:col-span-3 pl-3">
@@ -334,155 +334,77 @@ function Newjob() {
                             </div>
 
                             <div className="sm:col-span-3 ">
-                                <label htmlFor="experience" >
-                                    Experience<span class="text-red-500">*</span>
-                                </label>
-                                <div className="mt-2">
-                                    <select
-                                        name="experience"
-                                        id="experience"
-                                        value={experience}
-                                        onChange={(e) => setExperience(e.target.value)}
-                                        className="form-text"
-                                        required
-                                    >
-                                        <option>select</option>
-                                        <option>0</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                        <option>10</option>
-                                        <option>10+</option>
-                                    </select>
-                                </div>
+                                <Dropdown
+                                    label="Experience"
+                                    id="experience"
+                                    name="experience"
+                                    options={experienceOptions}
+                                    value={experience}
+                                    onChange={(e)=>setExperience(e.target.value)}
+                                    className="form-text"
+                                />
                             </div>
 
                             <div className="sm:col-span-3 pl-3">
-                                <label htmlFor="seniorityLevel" >
-                                    Seniority Level<span class="text-red-500">*</span>
-                                </label>
-                                <div className="mt-2">
-                                    <select
-                                        id="senioritylevel"
-                                        name="seniorityLevel"
-                                        value={seniorityLevel}
-                                        onChange={(e) => setSeniorityLevel(e.target.value)}
-                                        className="form-text"
-                                        required
-                                    >
-                                        <option>select</option>
-                                        <option>Internship</option>
-                                        <option>Entry Level</option>
-                                        <option>Associate</option>
-                                        <option>Mid-senior level</option>
-                                        <option>Director</option>
-                                        <option>Executive</option>
-                                        <option>Not applicable</option>
-                                    </select>
-                                </div>
+                                <Dropdown
+                                    label="Seniority Level"
+                                    id="seniorityLevel"
+                                    name="seniorityLevel"
+                                    options={seniorityLevelOptions}
+                                    value={seniorityLevel}
+                                    onChange={(e)=>setSeniorityLevel(e.target.value)}
+                                    className="form-text"
+                                />
                             </div>
-
-                            {/* <div className="col-span-full">
-                                        <label for="applicationDeadLine" >
-                                            Application Deadline
-                                        </label>
-                                        <div className="mt-2">
-                                            <input
-                                                type="text"
-                                                name="applicationDeadLine"
-                                                id="applicationDeadLine"
-                                                
-                                                className="form-text w-full"
-                                                placeholder="Job Application Deadline"
-
-                                            />
-                                        </div>
-                                    </div> */}
 
                             <div className="col-span-full">
-                                <label htmlFor="jobApplicationLink" >
-                                    Job Application Link<span class="text-red-500">*</span>
+                                <TextInput
+                                    label="Job Application Link"
+                                    id="jobApplicationLink"
+                                    name="jobApplicationLink"
+                                    value={applnLink}
+                                    onChange={(e)=>setApplnLink(e.target.value)}
+                                    placeholder="Job application link url"
+                                    className="form-text w-full"
+                                />
+                            </div>
+
+                            <div className="col-span-full">
+                                <label htmlFor="jobDescription">
+                                    Job Description<span class="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
-                                    <input
-                                        type="url"
-                                        name="jobApplicationLink"
-                                        id="jobApplicationLink"
-                                        value={applnLink}
-                                        onChange={(e) => setApplnLink(e.target.value)}
-                                        className="form-text w-full"
-                                        placeholder="Job application link url"
-                                        required
-                                    />
-                                </div>
-                            </div>
-                            {/* <div className="sm:col-span-2">
-          <label for="postal-code" >ZIP / Postal code</label>
-          <div className="mt-2">
-            <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"/>
-          </div>
-        </div> */}
-                        </div>
-                    </div>
-
-                    <div className="space-y-12">
-                        <div>
-                            {/* <h2 className=" font-semibold leading-7 text-gray-900">Profile</h2>
-      <p className="mt-1 text-base leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p> */}
-
-                            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                                {/* <div className="sm:col-span-4">
-          <label for="username" >Username</label>
-          <div className="mt-2">
-            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-              <span className="flex select-none items-center pl-3 text-gray-500 sm:text-base">workcation.com/</span>
-              <input type="text" name="username" id="username" autocomplete="username" className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-base sm:leading-6" placeholder="janesmith"/>
-            </div>
-          </div>
-        </div> */}
+                                    <textarea
+                                        id="jobDescription"
+                                        name="jobDescription"
+                                        rows="3"
+                                        className="form-text w-full h-52"
+                                        placeholder="Job Description"
+                                        value={jobDescription}
+                                        onChange={(e) => setJobDescription(e.target.value)}
+                                    ></textarea>
+                                </div><br />
 
                                 <div className="col-span-full">
-                                    <label htmlFor="jobDescription">
-                                        Job Description<span class="text-red-500">*</span>
+                                    <label htmlFor="screeningQuestions">
+                                        Screening Questions<span class="text-red-500">*</span>
+                                    </label>
+                                    <div className="mt-2 font-light">
+                                        <ul><p>Select the screening questions for this job:</p>
+                                            {/* {screeningQuestions.map((questions) => (
+                                                <li key={questions._id}>
+                                                    <input type="checkbox" value={checkBox} onChange={(e) => addQuestion(questions.question, e.target.checked)}></input>&nbsp;&nbsp;{questions.question}
+                                                </li> 
+                                            ))} */}
+                                        </ul>
+                                    </div>
+                                </div><br />
+
+                                <div className="col-span-full">
+                                    <label htmlFor="screeningQuestions">
+                                        Custom Screening Question
                                     </label>
                                     <div className="mt-2">
-                                        <textarea
-                                            id="jobDescription"
-                                            name="jobDescription"
-                                            rows="3"
-                                            className="form-text w-full h-52"
-                                            placeholder="Job Description"
-                                            value={jobDescription}
-                                            onChange={(e) => setJobDescription(e.target.value)}
-                                        ></textarea>
-                                    </div><br />
-
-                                    <div className="col-span-full">
-                                        <label htmlFor="screeningQuestions">
-                                            Screening Questions<span class="text-red-500">*</span>
-                                        </label>
-                                        <div className="mt-2 font-light">
-                                            <ul><p>Select the screening questions for this job:</p>
-                                                {screeningQuestions.map((questions) => (
-                                                    <li key={questions._id}>
-                                                        <input type="checkbox" value={checkBox} onChange={(e) => addQuestion(questions.question, e.target.checked)}></input>&nbsp;&nbsp;{questions.question}
-                                                    </li> // Adjust property names accordingly
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div><br />
-
-                                    <div className="col-span-full">
-                                        <label htmlFor="screeningQuestions">
-                                            Custom Screening Question
-                                        </label>
-                                        <div className="mt-2 font-light">
                                         <input
                                             type="text"
                                             placeholder="Enter your question"
@@ -492,111 +414,22 @@ function Newjob() {
                                         />
                                         <button className="rounded-full  bg-sky-800  text-white h-7 w-40" onClick={handleAddQuestion1}>Add Question</button>
                                         {showMessage && <p className={styles.successMessage}>Question added successfully.</p>}
-                                        </div>
-                                    </div><br/>
-
-                                    <div className="col-span-full">
-                                        <label htmlFor="active">Active<span class="text-red-500">*</span></label>
-                                        <div className="mt-2">
-                                            <button type="button"
-                                                className={`${active ? 'bg-blue-500 text-gray-700' : 'bg-gray-300 text-gray-700'
-                                                    } px-4 py-2 rounded-full`}
-                                                onClick={handleToggle}
-                                            >
-                                                {active ? 'ON' : 'OFF'}
-                                            </button>
-                                        </div>
                                     </div>
-                                    {/* <p className="mt-3 text-base leading-6 text-gray-600">Write a few sentences about yourself.</p> */}
+                                </div><br />
+
+                                <div className="col-span-full">
+                                    <label htmlFor="active">Active<span class="text-red-500">*</span></label>
+                                    <div className="mt-2">
+                                        <button type="button"
+                                            className={`${active ? 'bg-sky-800 text-white' : 'bg-gray-300 text-gray-700'
+                                                } px-4 py-2 rounded-full`}
+                                            onClick={handleToggle}
+                                        >
+                                            {active ? 'ON' : 'OFF'}
+                                        </button>
+                                    </div>
                                 </div>
-
-                                {/* <div className="col-span-full">
-          <label for="photo" >Photo</label>
-          <div className="mt-2 flex items-center gap-x-3">
-            <svg className="h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
-            </svg>
-            <button type="button" className="rounded-md bg-white px-2.5 py-1.5 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Change</button>
-          </div>
-        </div> */}
-
-                                {/* <div className="col-span-full">
-          <label for="cover-photo" >Cover photo</label>
-          <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-            <div className="text-center">
-              <svg className="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
-              </svg>
-              <div className="mt-4 flex text-base leading-6 text-gray-600">
-                <label for="file-upload" className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                  <span>Upload a file</span>
-                  <input id="file-upload" name="file-upload" type="file" className="sr-only"/>
-                </label>
-                <p className="pl-1">or drag and drop</p>
-              </div>
-              <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-            </div>
-          </div>
-        </div> */}
                             </div>
-                        </div>
-
-                        <div>
-                            {/* <h2 className=" font-semibold leading-7 text-gray-900">Notifications</h2>
-      <p className="mt-1 text-base leading-6 text-gray-600">We'll always let you know about important changes, but you pick what else you want to hear about.</p> */}
-
-                            {/* <div className="mt-10 space-y-10">
-        <fieldset>
-          <legend className="text-base font-semibold leading-6 text-gray-900">By Email</legend>
-          <div className="mt-6 space-y-6">
-            <div className="relative flex gap-x-3">
-              <div className="flex h-6 items-center">
-                <input id="comments" name="comments" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
-              </div>
-              <div className="text-base leading-6">
-                <label for="comments" className="font-medium text-gray-900">Comments</label>
-                <p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
-              </div>
-            </div>
-            <div className="relative flex gap-x-3">
-              <div className="flex h-6 items-center">
-                <input id="candidates" name="candidates" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
-              </div>
-              <div className="text-base leading-6">
-                <label for="candidates" className="font-medium text-gray-900">Candidates</label>
-                <p className="text-gray-500">Get notified when a candidate applies for a job.</p>
-              </div>
-            </div>
-            <div className="relative flex gap-x-3">
-              <div className="flex h-6 items-center">
-                <input id="offers" name="offers" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
-              </div>
-              <div className="text-base leading-6">
-                <label for="offers" className="font-medium text-gray-900">Offers</label>
-                <p className="text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend className="text-base font-semibold leading-6 text-gray-900">Push Notifications</legend>
-          <p className="mt-1 text-base leading-6 text-gray-600">These are delivered via SMS to your mobile phone.</p>
-          <div className="mt-6 space-y-6">
-            <div className="flex items-center gap-x-3">
-              <input id="push-everything" name="push-notifications" type="radio" className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
-              <label for="push-everything" >Everything</label>
-            </div>
-            <div className="flex items-center gap-x-3">
-              <input id="push-email" name="push-notifications" type="radio" className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
-              <label for="push-email" >Same as email</label>
-            </div>
-            <div className="flex items-center gap-x-3">
-              <input id="push-nothing" name="push-notifications" type="radio" className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
-              <label for="push-nothing" >No push notifications</label>
-            </div>
-          </div>
-        </fieldset>
-      </div> */}
                         </div>
                     </div>
 
@@ -611,8 +444,6 @@ function Newjob() {
                 </form>
             </div>
         </div>
-        // </div>
-        // </div>
     )
 }
 

@@ -134,7 +134,7 @@ function UpdateJob() {
                         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                             <div className="sm:col-span-3">
                                 <label htmlFor="companyName" >
-                                    Company Name<span class="text-red-500">*</span>
+                                    Company Name<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -170,7 +170,7 @@ function UpdateJob() {
 
                             <div className="sm:col-span-full">
                                 <label htmlFor="jobTitle" >
-                                    Job Title<span class="text-red-500">*</span>
+                                    Job Title<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -188,7 +188,7 @@ function UpdateJob() {
 
                             <div className="sm:col-span-3">
                                 <label htmlFor="jobCategory" >
-                                    Job Category<span class="text-red-500">*</span>
+                                    Job Category<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <select
@@ -233,7 +233,7 @@ function UpdateJob() {
 
                             <div className="sm:col-span-3 pl-3">
                                 <label htmlFor="jobType" >
-                                    Job Type<span class="text-red-500">*</span>
+                                    Job Type<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <select
@@ -257,7 +257,7 @@ function UpdateJob() {
 
                             <div className="sm:col-span-3 ">
                                 <label htmlFor="locationName" >
-                                    Job Location<span class="text-red-500">*</span>
+                                    Job Location<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -275,7 +275,7 @@ function UpdateJob() {
 
                             <div className="sm:col-span-3 pl-3">
                                 <label htmlFor="workplaceType" >
-                                    Workplace Type<span class="text-red-500">*</span>
+                                    Workplace Type<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <select
@@ -296,7 +296,7 @@ function UpdateJob() {
 
                             <div className="sm:col-span-3">
                                 <label htmlFor="qualification" >
-                                    Qualification<span class="text-red-500">*</span>
+                                    Qualification<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -314,7 +314,7 @@ function UpdateJob() {
 
                             <div className="sm:col-span-3 pl-3">
                                 <label htmlFor="Skill" >
-                                    Skills<span class="text-red-500">*</span>
+                                    Skills<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <select
@@ -334,7 +334,7 @@ function UpdateJob() {
 
                             <div className="sm:col-span-3 ">
                                 <label htmlFor="experience" >
-                                    Experience<span class="text-red-500">*</span>
+                                    Experience<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <select
@@ -364,7 +364,7 @@ function UpdateJob() {
 
                             <div className="sm:col-span-3 pl-3">
                                 <label htmlFor="seniorityLevel" >
-                                    Seniority Level<span class="text-red-500">*</span>
+                                    Seniority Level<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <select
@@ -406,7 +406,7 @@ function UpdateJob() {
 
                             <div className="col-span-full">
                                 <label htmlFor="jobApplicationLink" >
-                                    Job Application Link<span class="text-red-500">*</span>
+                                    Job Application Link<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <input
@@ -448,7 +448,7 @@ function UpdateJob() {
 
                                 <div className="col-span-full">
                                     <label htmlFor="jobDescription">
-                                        Job Description<span class="text-red-500">*</span>
+                                        Job Description<span className="text-red-500">*</span>
                                     </label>
                                     <div className="mt-2">
                                         <textarea
@@ -464,7 +464,7 @@ function UpdateJob() {
 
                                     {/* <div className="col-span-full">
                                         <label htmlFor="screeningQuestions">
-                                            Screening Questions<span class="text-red-500">*</span>
+                                            Screening Questions<span className="text-red-500">*</span>
                                         </label>
                                         <div className="mt-2 font-light">
                                             <ul><p>Select the screening questions for this job:</p>
@@ -495,7 +495,7 @@ function UpdateJob() {
                                     </div><br/> */}
 
                                     <div className="col-span-full">
-                                        <label htmlFor="active">Active<span class="text-red-500">*</span></label>
+                                        <label htmlFor="active">Active<span className="text-red-500">*</span></label>
                                         <div className="mt-2">
                                             <button type="button"
                                                 className={`${active ? 'bg-blue-500 text-gray-700' : 'bg-gray-300 text-gray-700'
@@ -604,7 +604,7 @@ function UpdateJob() {
                             className="rounded-full  bg-sky-800  text-white h-14 w-40"
                             type="submit"
                         >
-                            <div className="p-50" onclick={submit}>Update Job </div>
+                            <div className="p-50" onClick={submit}>Update Job </div>
                         </button>
                     </div>
                 </form>
