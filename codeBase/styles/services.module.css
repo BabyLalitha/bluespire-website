@@ -1,0 +1,306 @@
+
+
+
+.servicesbg100{
+    background-color : linear-gradient(45deg, rgb(239, 238, 239), rgb(42, 57, 169));
+
+    /* background-clip: text;
+
+    -webkit-background-clip: text; */
+
+    color: transparent;
+}
+.finaltext100{
+    max-height: 100%;
+    max-width: 100%;
+    padding-top: 100px;
+    padding-right: 10%;
+    font-weight: 300;
+    padding-left: 10%;
+    text-align: center;
+   
+    
+    font-size:50px;
+}
+.bottotitle100{
+    
+    padding-top: 50px;
+    text-align: center;
+    font-weight: 700;
+    font-size: x-large;
+    padding-bottom: 70px;
+
+}
+.bottomtext100{
+    max-width: 100%;
+    max-height: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
+    
+    text-align: center;
+    font-size: x-large;
+}
+.finaldiv100{
+   
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+}
+.buttomdiv100{
+    
+    background-color: #FE9D02;
+    max-height: 100%;
+    max-width:1519px;
+    
+}
+.contentable100{
+    margin-bottom: 100px;
+    margin-top: 100px;
+
+}
+.contentimg100{
+    border-radius: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 600px;
+    height: 400px;
+}
+
+.cardtext100{
+    opacity: 0;
+    animation: fade-in 2s ease-out 0s forwards;
+
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: justify;
+   
+    font-weight: 520;
+    font-size: x-large;
+   
+}
+@keyframes fade-in {
+    to{
+        opacity: 1;
+    }
+}
+
+.imagecolumn100{
+
+    width: 40%;
+   
+    
+  }
+  .textcolumn100 {
+    width: 60%;
+  }
+.cardimgtop100{
+    padding-left: 5%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 5%;
+    width: 700px;
+    height: 700px;
+}
+.mytext100{
+    font-weight: 600;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    padding-right: 3%;
+    padding-left: 3%;
+    text-align: center;
+    
+    font-size:x-large;
+}
+.cardname100{
+    font-weight: 700;
+}
+.firstcard100{
+    padding-top: 60px   ;
+}
+.firstcardtext100{
+    text-align: center;
+    padding-top: 10px;
+    font-size: xx-large;
+    font-weight: 1000;
+  
+    /* padding-top:100px; */
+}
+.firstcardimg100{
+  width:3500px;
+   height: 300px;
+}
+.Imagecontainer100{
+    width: 35000px;
+}
+.heading100{
+    padding-top: 10px;
+}
+.textoverlay100 {
+text-align: center;
+
+    
+/* max-height:100%; */
+width:max-content;
+    position: absolute;
+
+    top: 340px; 
+
+    left: 20%; 
+
+    transform: translate(-50%, -30%);
+
+    background-color: rgba(66, 113, 199, 0.681);
+
+    color:wheat;
+
+    
+
+    
+    
+
+    font-size:xx-large;
+
+  }
+.bgImg100{
+     /* background-image: url('../public/bg.jpg'); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} 
+.page100{   
+
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+padding-top: 100px;
+height: 100%;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 24px;
+/* scroll-snap-align: start; */
+}
+.container100{
+   
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 10px;
+   
+    
+    width: 100%;
+    height: 100%;
+    
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    
+}
+.card100{
+    
+    width: 400px;
+    height: 280px;
+    /* border-radius:20px; */
+    overflow:hidden;
+   
+    position : relative;
+}
+.cardimg100{
+    width: 100%;
+    height: 100%;
+    top:100px;
+    object-fit:fill;
+    /* border-radius: 15px; */
+}
+.cardbody100{
+    width: 100%;
+    height: 100%;
+    top:0;
+    right:-100%;
+    position: absolute;
+    background:#1f3d4738;
+    backdrop-filter:blur(5px);
+    /* border-radius: 15px; */
+    color:#ffff;
+    padding:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+    transition: 650ms;
+}
+.card100:hover .cardbody100{
+    right:0;
+}
+.cardtitle100{
+    padding-bottom: 50px;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 400;
+
+}
+.cardsubtitle100{
+    text-transform: capitalize;
+    font-size:14px;
+    font-weight: 300;
+}
+
+.cardinfo100{
+    font-size:16px;
+    line-height: 25px;
+    margin: 40px 0;
+    font-weight: 400;
+}
+.cardbtn100{
+    padding-bottom: 50px;
+    height: 20px ;
+    color: #1f3d47;
+    background:#8fabba;
+    /* padding:10px 20px; */
+    width: 120px;
+    border-radius:5px;
+    text-transform: capitalize;
+    border:none;
+    outline:none;
+    font-weight: 500;
+    cursor: pointer;
+}
+.hover3 {
+    background-image:
+      linear-gradient(#1095c1 0 0),
+      linear-gradient(#1095c1 0 0);
+    background-repeat: no-repeat;
+    background-size: 50% .08em;
+    background-position:
+      -100% 100%,
+      200% 0;
+    transition: background-size .3s, background-position .3s .3s;
+  }
+  .hover3:hover {
+    background-size: 50% 100%;
+    background-position:
+      0 100%,
+      100% 0;  
+    transition: background-size .3s .3s, background-position .3s;
+  }
+  .hover4 {
+    font-weight: 700;
+    --c: #1095c1;
+    line-height: 1.2em;
+    background:
+      conic-gradient(from -135deg at 100%  50%, var(--c) 90deg, #0000 0) 
+        0  var(--p, 0%) / var(--s, 0%) 200% no-repeat,
+      conic-gradient(from -135deg at 1.2em 50%, #0000 90deg, var(--c) 0) 
+        100% var(--p, 0%) / var(--s, 0%) 200% no-repeat;
+    transition: .4s, background-position 0s;
+  }
+  .hover4:hover {
+    --p: 100%;
+    --s: calc(50% + .6em);
+  }
