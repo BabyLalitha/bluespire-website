@@ -604,7 +604,7 @@ function UpdateJob() {
                             className="rounded-full  bg-sky-800  text-white h-14 w-40"
                             type="submit"
                         >
-                            <div className="p-50" onclick={submit}>Update Job </div>
+                            <div className="p-50" onClick={submit}>Update Job </div>
                         </button>
                     </div>
                 </form>
