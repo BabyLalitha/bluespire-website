@@ -498,8 +498,8 @@ function UpdateJob() {
                                         <label htmlFor="active">Active<span className="text-red-500">*</span></label>
                                         <div className="mt-2">
                                             <button type="button"
-                                                className={`${active ? 'bg-blue-500 text-gray-700' : 'bg-gray-300 text-gray-700'
-                                                    } px-4 py-2 rounded-full`}
+                                                className={`${active ? 'bg-sky-800 text-white' : 'bg-gray-300 text-gray-700'
+                                            } px-4 py-2 rounded-full`}
                                                 onClick={handleToggle}
                                             >
                                                 {active ? 'ON' : 'OFF'}
@@ -599,13 +599,16 @@ function UpdateJob() {
                         </div>
                     </div>
 
-                    <div className="w-100 pb-40 flex items-end justify-end" >
+                    <div className="w-100 pb-10 flex items-end justify-end" >
                         <button
                             className="rounded-full  bg-sky-800  text-white h-14 w-40"
                             type="submit"
                         >
                             <div className="p-50" onClick={submit}>Update Job </div>
                         </button>
+                    </div>
+                    <div className="text-center pb-40">
+                        {message}
                     </div>
                 </form>
             </div>

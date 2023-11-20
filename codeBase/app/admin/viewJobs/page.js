@@ -113,7 +113,7 @@ function Viewjob() {
             {searchQuery ?
               (filteredJobs.map((job, index) => (
                 <tr key={job._id} className="border-t">
-                  <td className="td">{job._id}</td>
+                  <td className="td">{job.jobId}</td>
                   <td className="td">{job.companyName}</td>
                   <td className="td">{job.clientName}</td>
                   <td className="td">{job.jobTitle}</td>
@@ -135,7 +135,7 @@ function Viewjob() {
               ))) :
               (jobs.map((job, index) => (
                 <tr key={job._id} className="border-t">
-                  <td className="td">{job._id}</td>
+                  <td className="td">{job.jobId}</td>
                   <td className="td">{job.companyName}</td>
                   <td className="td">{job.clientName}</td>
                   <td className="td">{job.jobTitle}</td>

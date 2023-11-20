@@ -29,7 +29,7 @@ export default function Admin() {
               className="bg-blue mt-4 hover:bg-blue text-white font-bold py-2 px-4 rounded"
             >Logout</button>
           </div>
-          <div className="text-black text-3xl font-medium font-['Poppins'] h-[70%]">
+          <div className="text-black text-3xl font-medium font-['Poppins'] h-[50%]">
             Welcome Admin
           </div>
         </div>

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import {mongoose,ObjectId} from 'mongoose';
 
 // mongoose.connect('mongodb://127.0.0.1:27017/adminmoduleDB', {
 //     useNewUrlParser: true,
@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 // Create a Mongoose model for your data
 const Schema = mongoose.Schema;
 const JobSchema = new Schema({
+    jobId:Number,
     companyName: String,
     clientName: String,
     jobTitle: String,
