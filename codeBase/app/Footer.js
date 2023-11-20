@@ -73,9 +73,6 @@ const Footer = () => {
           <span className="text-sm text-gray-500 sm:text-center">
             © Blue spire Inc. 2019. All Rights Reserved.
           </span>
-          <span className="text-sm text-gray-500 sm:text-center">
-           Version : 1.1.1
-          </span>
           <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0 items-center">
             <div className='text-gray-500'>Follow Us: </div>
             <div className='bg-blue h-12 w-12 rounded-full flex items-center justify-center'>

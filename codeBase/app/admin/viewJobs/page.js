@@ -1,12 +1,10 @@
 'use client';
 
 import React from 'react'
-import IndexPage from '../page.js'
 import { useState, useEffect } from 'react';
 import styles from '../../../styles/admin.module.css'
 import { useRouter } from 'next/navigation'
-import Search from '../../../components/globalSearch/page.js'
-import jQuery from 'jquery'
+import Search from '../../../components/search.js'
 
 function Viewjob() {
   //const [items, setItems] = useState([]);
