@@ -7,7 +7,8 @@ import TextInput from '../../../components/TextInputField.js';
 import Dropdown from '../../../components/DropDownField.js';
 
 function Newjob() {
-
+    // const [jobs,setJobs]=useState([]);
+    var [jobId,setJobId]=useState(0);
     const [companyName, setCompanyName] = useState('');
     const [clientName, setClientName] = useState('');
     const [jobTitle, setJobTitle] = useState('');
@@ -31,6 +32,7 @@ function Newjob() {
     const [questions, setQuestions] = useState([]);
     const [newQuestion, setNewQuestion] = useState('');
     const [showMessage, setShowMessage] = useState(false);
+    const [message,setMessage]=useState('');
 
     const workplaceTypeOptions = [
         {label:'select',value:''},
@@ -143,20 +145,82 @@ function Newjob() {
 
     }
 
+    // const createJobId = async(e)=>{
+    //     const response = await fetch(`/api/crudJob`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             // Add any other headers as needed
+    //         },
+    //     });
+    
+    //     if (!response.ok) {
+    //         throw new Error(`HTTP error! Status: ${response.status}`);
+    //     }
+    
+    //     const responseData = await response.json();
+    
+    //     // Now you can use responseData as the parsed JSON data
+    //     console.log(responseData.length);
+    //     const l=parseInt(responseData.length,10);
+    //     setJobId(1000+l);
+    //     console.log(l);
+    //     console.log(1000+l);
+    //     console.log(jobId);
+    // }
+
     const onSubmit = async (e) => {
         e.preventDefault();
+        // createJobId();
+        const resp = await fetch(`/api/crudJob`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                // Add any other headers as needed
+            },
+        });
+    
+        if (!resp.ok) {
+            throw new Error(`HTTP error! Status: ${resp.status}`);
+        }
+    
+        const responseData = await resp.json();
+    
+        // Now you can use responseData as the parsed JSON data
+        // console.log(responseData.length);
+        const l=parseInt(responseData.length,10);
+        // // setJobId(1000+l);
+        // console.log(l);
+        // console.log(1000+l);
+        // // setJobId(1000+l);
+        // jobId=1000+l;
+        // console.log(jobId);
+        if(l!=0)
+        {
+        const id=responseData[l-1].jobId;
+        console.log(responseData[l-1]);
+        console.log(id);
+        jobId=id+1;
+        console.log(jobId);
+        }
+        else{
+            jobId=1000;
+        }
+
         const response = await fetch('/api/crudJob', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ companyName, clientName, jobTitle, jobCategory, jobType, location, workplaceType, skills, experience, seniorityLevel, qualification, applnLink, jobDescription, active, selectedQuestions }),
+            body: JSON.stringify({ jobId, companyName, clientName, jobTitle, jobCategory, jobType, location, workplaceType, skills, experience, seniorityLevel, qualification, applnLink, jobDescription, active, selectedQuestions }),
         });
         if (response.ok) {
             console.log("added to database");
+            setMessage("Job posted successfully");
         }
         else {
             console.log("error");
+            setMessage("Error posting the job");
         }
         // console.log(jobId);
         // console.log(selectedQuestions);
@@ -315,7 +379,7 @@ function Newjob() {
 
                             <div className="sm:col-span-3 pl-3">
                                 <label htmlFor="Skill" >
-                                    Skills<span class="text-red-500">*</span>
+                                    Skills<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <select
@@ -371,7 +435,7 @@ function Newjob() {
 
                             <div className="col-span-full">
                                 <label htmlFor="jobDescription">
-                                    Job Description<span class="text-red-500">*</span>
+                                    Job Description<span className="text-red-500">*</span>
                                 </label>
                                 <div className="mt-2">
                                     <textarea
@@ -387,7 +451,7 @@ function Newjob() {
 
                                 <div className="col-span-full">
                                     <label htmlFor="screeningQuestions">
-                                        Screening Questions<span class="text-red-500">*</span>
+                                        Screening Questions<span className="text-red-500">*</span>
                                     </label>
                                     <div className="mt-2 font-light">
                                         <ul><p>Select the screening questions for this job:</p>
@@ -418,7 +482,7 @@ function Newjob() {
                                 </div><br />
 
                                 <div className="col-span-full">
-                                    <label htmlFor="active">Active<span class="text-red-500">*</span></label>
+                                    <label htmlFor="active">Active<span className="text-red-500">*</span></label>
                                     <div className="mt-2">
                                         <button type="button"
                                             className={`${active ? 'bg-sky-800 text-white' : 'bg-gray-300 text-gray-700'
@@ -433,13 +497,16 @@ function Newjob() {
                         </div>
                     </div>
 
-                    <div className="w-100 pb-40 flex items-end justify-end" >
+                    <div className="w-100 pb-10 flex items-end justify-end" >
                         <button
                             className="rounded-full  bg-sky-800  text-white h-14 w-40"
                             type="submit"
                         >
                             <div className=" p-50">Post Job </div>
                         </button>
+                    </div>
+                    <div className="text-center pb-40">
+                        {message}
                     </div>
                 </form>
             </div>
