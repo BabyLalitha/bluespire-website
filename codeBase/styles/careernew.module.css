@@ -1,5 +1,5 @@
 .abc{
-    position:fixed;
+    position:relative;
 }
 .sss{
     position: relative;
@@ -9,18 +9,16 @@
     
 }
 .find{
-    /* display:flex; */
-    max-height:50vw;
+   
     position:absolute;
-top: 20%;
-/* left: 130.02px; */
+top:clamp( 0%, 20%, 25%);
 left:10%;
 
-     align-items: center; 
+     
 
 }
 .the{
-    font-size: clamp(2rem, 4.5vw, 10rem);
+    font-size: clamp(0.8rem, 4.5vw, 10rem);
     line-height: 1;
     font-weight: 600;
     --tw-text-opacity: 1;
