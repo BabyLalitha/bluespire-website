@@ -2,6 +2,7 @@
 // import bodyParser from 'body-parser';
 // import job from '../../models/tblJobs'
 import Jobs from '../../models/Jobs'
+import {connect} from "../../dbConfig/dbConfig";
 
 export default async function crudJob(req, res) {
     // res.status(200).json({ name: 'John Doe' })
@@ -9,12 +10,13 @@ export default async function crudJob(req, res) {
 
     // Middleware to parse JSON data in request bodies
     // app.use(bodyParser.json());
+    connect()
     if (req.method === 'POST') {
         try {
-            const {companyName,clientName,jobTitle,jobCategory,jobType,location,workplaceType,skills,experience,qualification,seniorityLevel,applnLink,jobDescription,active,selectedQuestions} = req.body;
+            const {jobId,companyName,clientName,jobTitle,jobCategory,jobType,location,workplaceType,skills,experience,qualification,seniorityLevel,applnLink,jobDescription,active,selectedQuestions} = req.body;
 
             // Create a new document using the Mongoose model
-            const newData = new Jobs({ companyName,clientName,jobTitle,jobCategory,jobType,location,workplaceType,skills,experience,qualification,seniorityLevel,applnLink,jobDescription,active,selectedQuestions });
+            const newData = new Jobs({ jobId,companyName,clientName,jobTitle,jobCategory,jobType,location,workplaceType,skills,experience,qualification,seniorityLevel,applnLink,jobDescription,active,selectedQuestions });
 
             // Save the document to the database
             await newData.save();

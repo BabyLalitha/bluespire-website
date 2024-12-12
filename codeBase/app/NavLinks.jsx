@@ -21,10 +21,11 @@ const NavLinks = ({ navigate }) => {
                                 heading !== link.name ? setHeading(link.name) : setHeading("");
                             }}
                         >
-                            {
+                            {/* {
                                 link.submenu ? link.name :
                                     (<span onClick={() => navigate("/"+link.name)}>{link.name}</span>)
-                            }
+                            } */}
+                            <span onClick={() => navigate("/"+link.name)}>{link.name}</span>
 
                             <span className="text-xl md:hidden inline">
                                 <ion-icon

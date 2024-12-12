@@ -1,12 +1,10 @@
 'use client';
 
 import React from 'react'
-import IndexPage from '../page.js'
 import { useState, useEffect } from 'react';
 import styles from '../../../styles/admin.module.css'
 import { useRouter } from 'next/navigation'
-import Search from '../../../components/globalSearch/page.js'
-import jQuery from 'jquery'
+import Search from '../../../components/search.js'
 
 function Viewjob() {
   //const [items, setItems] = useState([]);
@@ -115,7 +113,7 @@ function Viewjob() {
             {searchQuery ?
               (filteredJobs.map((job, index) => (
                 <tr key={job._id} className="border-t">
-                  <td className="td">{job._id}</td>
+                  <td className="td">{job.jobId}</td>
                   <td className="td">{job.companyName}</td>
                   <td className="td">{job.clientName}</td>
                   <td className="td">{job.jobTitle}</td>
@@ -137,7 +135,7 @@ function Viewjob() {
               ))) :
               (jobs.map((job, index) => (
                 <tr key={job._id} className="border-t">
-                  <td className="td">{job._id}</td>
+                  <td className="td">{job.jobId}</td>
                   <td className="td">{job.companyName}</td>
                   <td className="td">{job.clientName}</td>
                   <td className="td">{job.jobTitle}</td>
